@@ -1,0 +1,35 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# misc
+.DS_Store
+*.pem
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# debug
+/logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# cache
+.eslintcache
+
+# builds
+/build
+*.tsbuildinfo
+
+# env files
+.env
+.env*.local
