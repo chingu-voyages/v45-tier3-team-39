@@ -8,7 +8,7 @@
 		"start": "npx ts-node index.ts",
 		"lint": "eslint . --ext .js,.ts",
 		"lint:fix": "eslint . --ext .js,.ts, --fix",
-		"tsc:": "tsc --noEmit",
+		"tsc:check": "tsc --noEmit",
 		"format": "prettier . --write"
 	},
 	"author": "",
