@@ -5,12 +5,21 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "npx ts-node index.ts",
+		"start": "parcel src/index.html",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
 		"tsc:check": "tsc --noEmit",
 		"format": "prettier . --write"
 	},
 	"author": "",
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"@types/react": "^18.2.20",
+		"@types/react-dom": "^18.2.7",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"parcel": "^2.9.3"
+	}
 }

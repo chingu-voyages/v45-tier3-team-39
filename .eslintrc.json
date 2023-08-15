@@ -16,5 +16,13 @@
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["error", "single"],
 		"semi": ["error", "always"]
-	}
+	},
+	"ignorePatterns": [
+		"node_modules/",
+		"**/node_modules/",
+		"/**/node_modules/*",
+		"out/",
+		"dist/",
+		"build/"
+	]
 }
