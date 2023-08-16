@@ -12,7 +12,7 @@
 		"start": "npm run start --workspaces",
 		"lint": "npm run lint --workspaces",
 		"lint:fix": "npm run lint:fix --workspaces",
-		"tsc": "tsc --noEmit",
+		"tsc:check": "npm run tsc:check --workspaces",
 		"format": "npm run format --workspaces",
 		"prepare": "husky install",
 		"lint-staged": "npx lint-staged"
@@ -39,13 +39,7 @@
 		"husky": "^8.0.3",
 		"lint-staged": "^14.0.0",
 		"prettier": "^3.0.1",
+		"process": "^0.11.10",
 		"typescript": "^5.1.6"
-	},
-	"lint-staged": {
-		"*.{js,ts,jsx,tsx}": [
-			"npm run format",
-			"npm run lint:fix",
-			"npm run tsc"
-		]
 	}
 }

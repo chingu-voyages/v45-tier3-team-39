@@ -25,9 +25,11 @@ yarn-error.log*
 
 # cache
 .eslintcache
+.parcel-cache
 
 # builds
-/build
+*/build
+*/dist
 *.tsbuildinfo
 
 # env files
