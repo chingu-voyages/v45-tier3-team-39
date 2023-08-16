@@ -15,7 +15,8 @@
 	"rules": {
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["error", "single"],
-		"semi": ["error", "always"]
+		"semi": ["error", "always"],
+		"@typescript-eslint/no-explicit-any": "off"
 	},
 	"ignorePatterns": [
 		"node_modules/",
