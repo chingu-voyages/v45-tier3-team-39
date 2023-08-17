@@ -9,7 +9,7 @@
     "server": "nodemon --exec ts-node server.ts",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --ext .js,.ts, --fix",
-    "tsc:": "tsc --noEmit",
+    "tsc:check": "tsc --noEmit",
     "format": "prettier src --write"
   },
   "author": "",

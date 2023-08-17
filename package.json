@@ -15,7 +15,7 @@
     "tsc:check": "npm run tsc:check --workspaces",
     "format": "npm run format --workspaces",
     "prepare": "husky install",
-    "lint-staged": "npx lint-staged"
+    "lint-staged": "npx lint-staged --verbose"
   },
   "repository": {
     "type": "git",
