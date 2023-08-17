@@ -1,45 +1,45 @@
 {
-	"name": "ordr",
-	"private": true,
-	"version": "0.0.1",
-	"description": "Your project's `readme` is as important to success as your code. For  this reason you should put as much care into its creation and maintenance as you would any other component of the application.",
-	"main": "index.js",
-	"directories": {
-		"doc": "docs"
-	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "npm run start --workspaces",
-		"lint": "npm run lint --workspaces",
-		"lint:fix": "npm run lint:fix --workspaces",
-		"tsc:check": "npm run tsc:check --workspaces",
-		"format": "npm run format --workspaces",
-		"prepare": "husky install",
-		"lint-staged": "npx lint-staged"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/chingu-voyages/v45-tier3-team-39.git"
-	},
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/chingu-voyages/v45-tier3-team-39/issues"
-	},
-	"homepage": "https://github.com/chingu-voyages/v45-tier3-team-39#readme",
-	"workspaces": [
-		"app",
-		"server"
-	],
-	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^6.3.0",
-		"@typescript-eslint/parser": "^6.3.0",
-		"eslint": "^8.47.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-react": "^7.33.1",
-		"husky": "^8.0.3",
-		"lint-staged": "^14.0.0",
-		"prettier": "^3.0.1",
-		"process": "^0.11.10",
-		"typescript": "^5.1.6"
-	}
+  "name": "ordr",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Your project's `readme` is as important to success as your code. For  this reason you should put as much care into its creation and maintenance as you would any other component of the application.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run start --workspace=app & npm start dev --workspace=server",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
+    "tsc:check": "npm run tsc:check --workspaces",
+    "format": "npm run format --workspaces",
+    "prepare": "husky install",
+    "lint-staged": "npx lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chingu-voyages/v45-tier3-team-39.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chingu-voyages/v45-tier3-team-39/issues"
+  },
+  "homepage": "https://github.com/chingu-voyages/v45-tier3-team-39#readme",
+  "workspaces": [
+    "app",
+    "server"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.0",
+    "prettier": "^3.0.1",
+    "process": "^0.11.10",
+    "typescript": "^5.1.6"
+  }
 }
