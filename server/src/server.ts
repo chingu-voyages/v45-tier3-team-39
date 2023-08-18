@@ -19,7 +19,7 @@ const runServer = async () => {
 
     app.listen(PORT, () => {
       console.log(
-        `Sever is running in ${process.env.NODE_ENV} mode & listening on PORT ${PORT}`
+        `Server is running in ${process.env.NODE_ENV} mode & listening on PORT ${PORT}`
       );
     });
   } catch (error) {
