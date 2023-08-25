@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <!-- navbar -->
+    <div class="navbar p-4 h-20">
+      <div class="navbar-start">
+      </div>
+      <div class="navbar-center">
+        <h1 class="text-xl font-bold">Restaurant</h1>
+      </div>
+      <div class="navbar-end indicator">
+      </div>
+    </div>
+
+    <!-- table -->
+    <div class="overflow-x-auto">
+      <table class="table table-zebra table-pin-rows table-pin-cols">
+        <!-- table head -->
+        <thead>
+          <tr>
+            <th></th>
+            <th class="pl-0">Table</th>
+            <th>Order</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <!-- table body -->
+        <tbody>
+          <!-- row 1 -->
+          <tr>
+            <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th>
+            <td class="pl-0">
+              <div class="flex items-center space-x-3">
+                <div>
+                  <p class="text-2xl font-bold">15</p>
+                </div>
+              </div>
+            </td>
+            <td>
+             <a href="./kitchen__details.html" class="link"><div class="text-2xl font-bold">13497</div></a></td>
+            <td><div class="badge badge-lg">Ordered</div>
+            </td>
+            <th>
+              <button class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </button>
+            </th>
+          </tr>
+
+          <!-- row 2 -->
+          <tr>
+            <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th>
+            <td class="pl-0">
+              <div class="flex items-center space-x-3">
+                <div>
+                  <p class="text-2xl font-bold">15</p>
+                </div>
+              </div>
+            </td>
+            <td>
+             <a href="./kitchen__details.html" class="link"><div class="text-2xl font-bold">13497</div></a></td>
+            <td><div class="badge badge-lg  badge-info">Preparing</div>
+            </td>
+            <th>
+              <button class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </button>
+            </th>
+          </tr>
+          <!-- row 3 -->
+          <tr>
+            <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th>
+            <td class="pl-0">
+              <div class="flex items-center space-x-3">
+                <div>
+                  <p class="text-2xl font-bold">15</p>
+                </div>
+              </div>
+            </td>
+            <td>
+             <a href="./kitchen__details.html" class="link"><div class="text-2xl font-bold">13497</div></a></td>
+            <td><div class="badge badge-lg  badge-warning">Ready !</div>
+            </td>
+            <th>
+              <button class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </button>
+            </th>
+          </tr>
+
+          <!-- row 4 -->
+          <tr>
+            <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th>
+            <td class="pl-0">
+              <div class="flex items-center space-x-3">
+                <div>
+                  <p class="text-2xl font-bold">15</p>
+                </div>
+              </div>
+            </td>
+            <td>
+             <a href="./kitchen__details.html" class="link"><div class="text-2xl font-bold">13497</div></a></td>
+            <td><div class="badge badge-lg  badge-neutral">Delivered</div>
+            </td>
+            <th>
+              <button class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </button>
+            </th>
+          </tr>
+
+        </tbody>
+
+        <!-- foot -->
+            <tfoot>
+            <tr>
+              <th></th>
+              <th class="pl-0">Table</th>
+              <th>Order</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </tfoot>
+
+      </table>
+    </div>
+
+
+
+  </body>
+</html>

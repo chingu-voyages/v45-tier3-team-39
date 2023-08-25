@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="navbar p-4">
+      <!-- navbar-start -->
+      <div class="navbar-start">
+        <!-- dropdown -->
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+            </svg>
+          </label>
+          <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a href="/"><p class="text-base">All</p></a>
+            </li>
+            <li>
+              <a href="/"><p class="text-base">Artisan Pizza</p></a>
+            </li>
+            <li>
+              <a href="/"><p class="text-base">Vegan Pizza</p></a>
+            </li>
+            <li>
+              <a href="/"><p class="text-base">Starter</p></a>
+            </li>
+            <li>
+              <a href="/"><p class="text-base">Drinks</p></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- navbar-centre -->
+      <div class="navbar-center">
+        <h1 class="text-xl font-bold">Restaurant</h1>
+      </div>
+      <!-- navbar-end -->
+      <div class="navbar-end indicator">
+        <span class="indicator-item badge badge-neutral">0</span>
+        <a role="button" class="btn btn-accent" href="./customer__order.html">orders</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
+      <!-- card contents -->
+      <button onclick="my_modal_4.showModal()">
+        <!-- JSX: onClick={()=>window.my_modal_3.showModal()} -->
+        <div class="card card-compact bg-base-100 shadow-xl">
+          <figure><img src="https://picsum.photos/400?random=1" alt="" /></figure>
+          <div class="card-body">
+            <h2 class="card-title font-bold">Marga</h2>
+            <div class="card-actions justify-between">
+              <div class="badge badge-accent badge-outline badge-sm">Artisan Pizza</div>
+              <p class="grow-0">£8</p>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <!-- modal -->
+      <dialog id="my_modal_4" class="modal">
+        <form method="dialog" class="modal-box">
+          <button class="btn btn-circle btn-sm absolute right-2 top-2 focus:outline-none">✕</button>
+          <!-- image -->
+          <figure class="p-4">
+            <img class="rounded-2xl object-cover" src="https://picsum.photos/500?random=1" alt="" />
+          </figure>
+          <!-- dish name /category -->
+          <div class="flex items-center">
+            <h2 class="text-2xl font-bold pr-2">Marga</h2>
+            <div class="badge badge-accent badge-outline badge-sm">Artisan Pizza</div>
+          </div>
+          <!-- discription -->
+          <p class="py-4">Italian Mozzarella, Italian Tomato Sauce, Basil Parmesan</p>
+          <!-- quantity / price -->
+          <div class="flex justify-between items-center pb-4">
+            <input type="number" name="quantity" placeholder="0" class="input input-bordered max-w-3 focus:outline-none" />
+            <p class="text-lg">£8</p>
+          </div>
+          <button class="btn btn-accent btn-block">Add to Orders</button>
+        </form>
+      </dialog>
+
+      <!-- card contents -->
+      <button onclick="my_modal_4.showModal()">
+        <!-- JSX: onClick={()=>window.my_modal_3.showModal()} -->
+        <div class="card card-compact bg-base-100 shadow-xl">
+          <figure><img src="https://picsum.photos/400?random=1" alt="" /></figure>
+          <div class="card-body">
+            <h2 class="card-title font-bold">Marga</h2>
+            <div class="card-actions justify-between">
+              <div class="badge badge-accent badge-outline badge-sm">Artisan Pizza</div>
+              <p class="grow-0">£8</p>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <!-- card contents -->
+      <button onclick="my_modal_4.showModal()">
+        <!-- JSX: onClick={()=>window.my_modal_3.showModal()} -->
+        <div class="card card-compact bg-base-100 shadow-xl">
+          <figure><img src="https://picsum.photos/400?random=1" alt="" /></figure>
+          <div class="card-body">
+            <h2 class="card-title font-bold">Marga</h2>
+            <div class="card-actions justify-between">
+              <div class="badge badge-accent badge-outline badge-sm">Artisan Pizza</div>
+              <p class="grow-0">£8</p>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <!-- card contents -->
+      <button onclick="my_modal_4.showModal()">
+        <!-- JSX: onClick={()=>window.my_modal_3.showModal()} -->
+        <div class="card card-compact bg-base-100 shadow-xl">
+          <figure><img src="https://picsum.photos/400?random=1" alt="" /></figure>
+          <div class="card-body">
+            <h2 class="card-title font-bold">Marga</h2>
+            <div class="card-actions justify-between">
+              <div class="badge badge-accent badge-outline badge-sm">Artisan Pizza</div>
+              <p class="grow-0">£8</p>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </body>
+</html>

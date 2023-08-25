@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <!--  login -->
+       <div class="relative flex flex-col justify-center h-screen overflow-hidden">
+        <div class="p-8 m-auto bg-white rounded-md shadow-md lg:max-w-lg">
+            <h1 class="text-3xl font-semibold text-center text-accent">Login</h1>
+            <form class="space-y-4">
+                <div>
+                    <label class="label">
+                        <span class="text-base label-text">Username</span>
+                    </label>
+                    <input type="text" placeholder="Enter Username" class="w-full input input-bordered input-accent" />
+                </div>
+                <div class="pb-4">
+                    <label class="label">
+                        <span class="text-base label-text">Password</span>
+                    </label>
+                    <input type="password" placeholder="Enter Password"
+                        class="w-full input input-bordered input-accent" />
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-accent btn-wide">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+  </body>
+</html>
