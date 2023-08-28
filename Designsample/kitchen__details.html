@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <!-- navbar -->
+    <div class="navbar p-4 h-20">
+      <div class="navbar-start">
+        <a href="./kitchen.html" class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+          ORDERS
+        </a>
+      </div>
+
+      <div class="navbar-center">
+        <h1 class="text-xl font-bold">Restaurant</h1>
+      </div>
+      <div class="navbar-end"></div>
+    </div>
+
+    <!-- table / order -->
+    <div class="pb-4 flex gap-4 justify-center">
+      <div class="stats shadow">
+        <div class="stat text-center">
+          <div class="stat-title">Table</div>
+          <div class="stat-value">15</div>
+        </div>
+      </div>
+      <div class="stats shadow">
+        <div class="stat text-center">
+          <div class="stat-title">Order</div>
+          <div class="stat-value">13497</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- table -->
+    <div class="overflow-x-auto">
+      <table class="table table-zebra table-pin-rows table-pin-cols">
+
+        <!-- table head -->
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+
+        <!-- table body -->
+        <tbody>
+          <!-- row 1 -->
+          <tr>
+            <td>
+              <p class="text-2xl font-bold">Marga</p>
+            </td>
+            <td>
+              <p class="text-2xl font-bold">3</p>
+            </td>
+          </tr>
+
+          <!-- row 2 -->
+          <tr>
+            <td>
+              <p class="text-2xl font-bold">Tomarchio Organic Cola</p>
+            </td>
+            <td>
+              <p class="text-2xl font-bold">3</p>
+            </td>
+          </tr>
+        </tbody>
+
+        <!-- foot -->
+        <tfoot>
+          <tr>
+            <th>Order</th>
+            <th>Quantity</th>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!--  Prepare /Change button  -->
+      <div class="p-4 flex gap-4 justify-center">
+        <button class="btn btn-info btn-wide" onclick="">Prepare</button>
+        <button class="btn btn-warning btn-wide" onclick="">Ready !</button>
+      </div>
+    </div>
+  </body>
+</html>
