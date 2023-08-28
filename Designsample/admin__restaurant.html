@@ -9,9 +9,10 @@
   </head>
 
   <body>
-    <div class="max-w-xl mx-auto my-0">
+    <div class="max-w-2xl mx-auto p-4">
+
       <!-- navbar -->
-      <div class="navbar p-4 h-20">
+      <div class="navbar p-0 h-20 mb-4">
         <div class="flex-1">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
             <path
@@ -32,32 +33,31 @@
         </div>
       </div>
 
-
       <!--form -->
-      <div class="p-4 m-auto">
+      <div class="m-auto">
         <form class="space-y-4">
           <!-- form title -->
           <div>
-            <label class="label">
+            <label class="label" for="name">
               <span class="text-base label-text">Restaurant name</span>
             </label>
-            <input type="text" placeholder="Restaurant name" class="w-full input input-bordered input-accent focus:outline-none" />
+            <input type="text" id="name" class="w-full input input-bordered input-accent focus:outline-none" />
           </div>
 
           <!-- logo image -->
           <div>
-            <label class="label">
+            <label class="label" for="logo">
               <span class="text-base label-text">Logo image</span>
             </label>
-            <input type="file" class="file-input file-input-bordered file-input-accent w-full" />
+            <input type="file" id="logo" class="file-input file-input-bordered file-input-accent w-full focus:outline-none" />
           </div>
 
           <!-- number of table  -->
           <div>
-            <label class="label">
+            <label class="label" for="tableNumber">
               <span class="text-base label-text">Number of tables</span>
             </label>
-            <input type="number" name="quantity" placeholder="0" class="input input-bordered input-accent max-w-3 w-full focus:outline-none" />
+            <input type="number" id="tableNumber" name="quantity" placeholder="0" class="input input-bordered input-accent max-w-3 w-full focus:outline-none" />
           </div>
           <!-- button -->
           <div class="text-center pt-8">

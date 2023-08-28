@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="max-w-2xl mx-auto p-4">
+      <!-- navbar -->
+      <div class="navbar h-20 p-0">
+        <div class="navbar-start">
+          <a href="./admin__menu.html" class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+            MENU
+          </a>
+        </div>
+        <div class="navbar-center"></div>
+        <div class="navbar-end indicator"></div>
+      </div>
+
+      <!-- Category details -->
+      <div>
+        <!-- Category details Heading
+        <div class="p-3 bg-base-300 rounded  text-center">
+          <h1 class="text-xl font-semibold tracking-wider ">Marga</h1>
+        </div>
+
+-->
+      </div>
+
+      <!--form -->
+      <div class="m-auto">
+        <form class="space-y-4 form-control ">
+          <!-- dish name -->
+          <div>
+            <label class="label" for="name">
+              <span class="text-base label-text">Dish name</span>
+            </label>
+            <input type="text" id="name" placeholder="Name" class="w-full input input-bordered input-accent focus:outline-none" required />
+          </div>
+
+          <!-- dish Category -->
+          <div>
+            <label class="label" for="category">
+              <span class="text-base label-text">Category</span>
+            </label>
+            <select class="select select-accent w-full focus:outline-none" id="category">
+              <option disabled selected>Artisan Pizza</option>
+              <option>Vegan</option>
+              <option>Drinks</option>
+            </select>
+          </div>
+
+          <!-- dish image -->
+          <div>
+            <label class="label" for="image">
+              <span class="text-base label-text">Image</span>
+            </label>
+            <input type="file" id="image" class="file-input file-input-bordered file-input-accent w-full focus:outline-none" />
+          </div>
+
+          <!-- dish description -->
+          <div>
+
+            <label class="label" for="description">
+              <span class="text-base label-text">Description</span>
+            </label>
+            <textarea class="textarea textarea-accent w-full focus:outline-none" id="description" placeholder="Description"></textarea>
+          </div>
+
+          <!-- dish Price -->
+          <div>
+            <label class="label" for="price">
+              <span class="text-base label-text">Price</span>
+            </label>
+            <div  class="text-xl"> £
+              <input type="number" id="price" placeholder="0" class="w-max input input-bordered input-accent focus:outline-none" required/>
+            </div>
+          </div>
+
+          <!-- button -->
+          <div class="text-center pt-8">
+            <button class="btn btn-accent btn-wide">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
