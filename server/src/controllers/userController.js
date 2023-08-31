@@ -5,7 +5,7 @@ const generateToken = require('../utils/generateToken')
 
 
 //@desc   signup new user
-//@route  POST /api/users
+//@route  POST /api/users/signup
 //@access Public
 const signup = asyncHandler(async (req, res) => {
 

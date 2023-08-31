@@ -14,6 +14,7 @@ app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }));
 const userRoutes = require('./routes/userRoutes.js');
+const categoryRoutes = require('./routes/categoryRoutes');
 
 const runServer = async () => {
   try {
@@ -23,7 +24,8 @@ const runServer = async () => {
 
     app.use(cors())
     app.use(logger('dev'));
-    app.use("/admin", userRoutes);
+    app.use("/api/users", userRoutes);
+    app.use("/api/categories", categoryRoutes);
 
     app.use(notFound);
     app.use(errorHandler);
