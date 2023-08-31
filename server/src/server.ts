@@ -1,7 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import logger from 'morgan';
+import { json, urlencoded } from 'express';
 import { connectDB } from './db';
+import menuRouter from './routes/menu';
+import restaurantRouter from './routes/restaurant';
 
 const app = express();
 
@@ -11,7 +14,11 @@ const runServer = async () => {
   try {
     await connectDB();
 
-    app.get('/', (_req, res) => res.send('Hello from the server! 🚀🚀🚀'));
+    app.use(urlencoded({ extended: true }));
+    app.use(json());
+
+    app.use('/menu', menuRouter);
+    app.use('/restaurant', restaurantRouter);
 
     app.use(logger('dev'));
 
