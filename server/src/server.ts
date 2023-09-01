@@ -1,16 +1,14 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import logger from 'morgan';
-const cors = require('cors')
+const cors = require('cors');
 import { connectDB } from './db';
-const { notFound, errorHandler } = require('./middleware/errorHandler')
+const { notFound, errorHandler } = require('./middleware/errorHandler');
 const app = express();
-
 
 dotenv.config({ path: './config/.env' });
 
-app.use(express.json())
-
+app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 const userRoutes = require('./routes/userRoutes.js');
@@ -22,14 +20,13 @@ const runServer = async () => {
 
     app.get('/', (_req, res) => res.send('Hello from the server! 🚀🚀🚀'));
 
-    app.use(cors())
+    app.use(cors());
     app.use(logger('dev'));
-    app.use("/api/users", userRoutes);
-    app.use("/api/categories", categoryRoutes);
+    app.use('/api/users', userRoutes);
+    app.use('/api/categories', categoryRoutes);
 
     app.use(notFound);
     app.use(errorHandler);
-
 
     const PORT = process.env.PORT || 2023;
 

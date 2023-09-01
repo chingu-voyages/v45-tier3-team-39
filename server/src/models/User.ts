@@ -1,5 +1,5 @@
 import { Document, Schema, model } from 'mongoose';
-const bcrypt = require ('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 interface IUser extends Document {
   username: string;
@@ -39,8 +39,8 @@ userSchema.methods.matchPassword = async function (enterPassword: string) {
 };
 
 //To encrypt the password before saving
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
     next();
   }
   const salt = await bcrypt.genSalt(10);
@@ -50,4 +50,3 @@ userSchema.pre("save", async function (next) {
 const User = model<IUser>('User', userSchema);
 
 module.exports = User;
- 
