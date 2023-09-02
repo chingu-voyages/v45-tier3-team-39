@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes';
+import { RecoilRoot } from 'recoil';
 
 const domElement = document.getElementById('root');
 
@@ -10,7 +11,9 @@ if (domElement) {
 
   const App = () => (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <RecoilRoot>
+        <RouterProvider router={router} />
+      </RecoilRoot>
     </React.StrictMode>
   );
 
