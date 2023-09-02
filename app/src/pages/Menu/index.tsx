@@ -24,7 +24,7 @@ export const MenuPage = (): JSX.Element => {
   };
 
   let catItems: MenuItem[] = [];
-  if (category !== 'All') {
+  if (category !== 'all') {
     catItems = items.filter((item) => item.category === category);
   } else {
     catItems = items;
