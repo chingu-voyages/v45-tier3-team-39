@@ -1,4 +1,4 @@
-type MenuItem = {
+export type MenuItem = {
   item_id: string;
   name: string;
   category: string;
