@@ -1,11 +1,14 @@
 import React from 'react';
 import CatDropdown from '../../components/CatDropdown';
+import MenuCard from '../../components/MenuCard';
+import { items } from '../../seeds';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 export const MenuPage = (): JSX.Element => {
   const [category, SetCategory] = useState('All');
-  console.log(category);
+  const [itemId, setItemId] = useState('');
+  console.log(category, itemId);
 
   return (
     <div>
@@ -28,7 +31,11 @@ export const MenuPage = (): JSX.Element => {
         </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
-        {/* Card component */}
+        {items.map((item) => {
+          return (
+            <MenuCard details={item} key={item.item_id} setItemId={setItemId} />
+          );
+        })}
         {/* Modal component */}
       </div>
     </div>
