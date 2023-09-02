@@ -49,4 +49,4 @@ userSchema.pre('save', async function (next) {
 
 const User = model<IUser>('User', userSchema);
 
-module.exports = User;
+export default User;
