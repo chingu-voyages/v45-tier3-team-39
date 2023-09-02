@@ -1,8 +1,10 @@
 import React from 'react';
+import { StoryObj } from '@storybook/react';
 import { IconButton } from './IconButton';
 import { InfoIcon } from '../Icons/InfoIcon';
 import { HomeIcon } from '../Icons/HomeIcon';
-import { IconButtonProps } from './types';
+
+type Story = StoryObj<typeof IconButton>;
 
 export default {
   title: 'IconButton',
@@ -13,7 +15,7 @@ export default {
   },
 };
 
-export const InfoSolid: { args: IconButtonProps } = {
+export const InfoSolid: Story = {
   args: {
     color: 'primary',
     Icon: <InfoIcon />,
@@ -21,7 +23,7 @@ export const InfoSolid: { args: IconButtonProps } = {
   },
 };
 
-export const InfoSquare: { args: IconButtonProps } = {
+export const InfoSquare: Story = {
   args: {
     color: 'secondary',
     shape: 'square',
@@ -30,7 +32,7 @@ export const InfoSquare: { args: IconButtonProps } = {
   },
 };
 
-export const HomeOutline: { args: IconButtonProps } = {
+export const HomeOutline: Story = {
   args: {
     color: 'primary',
     variant: 'outline',
@@ -39,7 +41,7 @@ export const HomeOutline: { args: IconButtonProps } = {
   },
 };
 
-export const HomeSolidSecondary: { args: IconButtonProps } = {
+export const HomeSolidSecondary: Story = {
   args: {
     color: 'secondary',
     Icon: <HomeIcon />,
