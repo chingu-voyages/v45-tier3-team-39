@@ -52,7 +52,18 @@ const updateCategory = asyncHandler(async (req, res) => {
     res.json(category);
   });
 
-
+  //@desc   get all category
+  //@route  GET /api/categories:id
+  //@access public
+  
+  const getOneCategory = asyncHandler(async (req, res) => {
+    const category = await Category.findById(req.params.id);
+    if (!category) {
+      res.status(404);
+      throw new Error("category Not Found");
+    }
+    res.json(category);
+  });
 
 
 // @desc    DELETE a Category
@@ -77,7 +88,8 @@ const deleteCategory = asyncHandler(async (req, res) => {
     createdCategory,
     deleteCategory,
     updateCategory,
-    getAllCategory
+    getAllCategory,
+    getOneCategory
 
     
   }
