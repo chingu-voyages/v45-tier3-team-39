@@ -25,6 +25,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.22.14",
     "@babel/preset-react": "^7.22.5",
+    "@parcel/transformer-svg-react": "^2.9.3",
     "@storybook/addon-essentials": "^7.4.0",
     "@storybook/addon-interactions": "^7.4.0",
     "@storybook/addon-links": "^7.4.0",
