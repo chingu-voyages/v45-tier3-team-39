@@ -1,14 +1,41 @@
 import React from 'react';
 import CatDropdown from '../../components/CatDropdown';
 import MenuCard from '../../components/MenuCard';
-import { items } from '../../seeds';
+import CardModal from '../../components/CardModal';
+import { items, MenuItem } from '../../seeds';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { basketState } from '../../atoms';
 
 export const MenuPage = (): JSX.Element => {
   const [category, SetCategory] = useState('All');
   const [itemId, setItemId] = useState('');
-  console.log(category, itemId);
+  const basket = useRecoilValue(basketState);
+
+  const defaultItem: MenuItem = {
+    //typescript fallback object
+    item_id: '',
+    img_url: '',
+    name: '',
+    category: '',
+    description: '',
+    price: 0,
+  };
+
+  let catItems: MenuItem[] = [];
+  if (category !== 'All') {
+    catItems = items.filter((item) => item.category === category);
+  } else {
+    catItems = items;
+  }
+
+  const itemDetails = catItems.find((item) => item.item_id === itemId);
+
+  const basketUnits =
+    basket.length > 0
+      ? basket.reduce((prev, curr) => prev + curr.quantity, 0)
+      : 0;
 
   return (
     <div>
@@ -20,7 +47,9 @@ export const MenuPage = (): JSX.Element => {
           <h1 className="text-xl font-bold">La mia Pizza</h1>
         </div>
         <div className="navbar-end indicator">
-          <span className="indicator-item badge badge-neutral">{0}</span>
+          <span className="indicator-item badge badge-neutral">
+            {basket.length > 0 ? basketUnits : 0}
+          </span>
           <Link
             role="button"
             className="btn btn-accent"
@@ -31,12 +60,17 @@ export const MenuPage = (): JSX.Element => {
         </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
-        {items.map((item) => {
+        {(catItems || items).map((item) => {
           return (
             <MenuCard details={item} key={item.item_id} setItemId={setItemId} />
           );
         })}
-        {/* Modal component */}
+        {itemId && (
+          <CardModal
+            details={itemDetails || defaultItem}
+            setItemId={setItemId}
+          />
+        )}
       </div>
     </div>
   );
