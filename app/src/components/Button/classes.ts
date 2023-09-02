@@ -16,6 +16,7 @@ const classes: ButtonClasses = {
   color: {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
+    accent: 'btn-accent',
     success: 'btn-success',
     danger: 'btn-danger',
     warning: 'btn-warning',
@@ -29,6 +30,7 @@ const classes: ButtonClasses = {
     sm: 'btn-sm',
     md: 'btn-md',
     lg: 'btn-lg',
+    wide: 'btn-wide',
   },
   variant: {
     outline: 'btn-outline',

@@ -7,11 +7,12 @@ type ButtonProps = {
 };
 
 type ButtonVariant = 'outline' | 'ghost' | 'solid';
-type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'wide';
 type ButtonColor =
   | 'primary'
   | 'secondary'
   | 'success'
+  | 'accent'
   | 'danger'
   | 'warning'
   | 'info'
