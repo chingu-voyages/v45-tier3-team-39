@@ -1,14 +1,18 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-
-const App = () => {
-  return (
-    <h1 className="text-2xl font-bold underline text-blue-500">Hello world!</h1>
-  );
-};
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
 
 const domElement = document.getElementById('root');
+
 if (domElement) {
   const root = createRoot(domElement);
+
+  const App = () => (
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  );
+
   root.render(<App />);
 }

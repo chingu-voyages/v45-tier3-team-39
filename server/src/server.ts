@@ -6,6 +6,8 @@ import { connectDB } from './db';
 import userRoutes from './routes/userRoutes';
 import { swaggerSpec } from '../swagger';
 
+const cors = require('cors');
+const { notFound, errorHandler } = require('./middleware/errorHandler');
 const app = express();
 
 dotenv.config({ path: './config/.env' });
@@ -15,13 +17,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/user', userRoutes);
 
+app.use(express.urlencoded({ extended: true }));
+const categoryRoutes = require('./routes/categoryRoutes');
+
 const runServer = async () => {
   try {
     await connectDB();
 
     app.get('/', (_req, res) => res.send('Hello from the server! 🚀🚀🚀'));
 
+    app.use(cors());
     app.use(logger('dev'));
+    app.use('/api/users', userRoutes);
+    app.use('/api/categories', categoryRoutes);
+
+    app.use(notFound);
+    app.use(errorHandler);
 
     const PORT = process.env.PORT || 2023;
 
