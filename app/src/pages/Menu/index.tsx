@@ -61,7 +61,15 @@ export const MenuPage = (): JSX.Element => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
         {(catItems || items).map((item) => {
           return (
-            <MenuCard details={item} key={item.item_id} setItemId={setItemId} />
+            <MenuCard
+              name={item.name}
+              key={item.item_id}
+              category={item.category}
+              price={item.price}
+              img_url={item.img_url}
+              onSelect={setItemId}
+              item_id={item.item_id}
+            />
           );
         })}
         {itemId && (
