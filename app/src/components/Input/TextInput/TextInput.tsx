@@ -1,5 +1,6 @@
 import React from 'react';
-import * as types from './TextInputTypes';
+import * as t from './TextInputTypes';
+import classes from './classes';
 
 //component
 export const TextInput = ({
@@ -9,7 +10,7 @@ export const TextInput = ({
   type = 'text',
   placeholder = 'Type here',
   onChange,
-}: types.TextInputProps) => {
+}: t.TextInputProps) => {
   return (
     <div>
       <label className="label">
@@ -18,7 +19,7 @@ export const TextInput = ({
       <input
         type={type}
         placeholder={placeholder}
-        className={`input input-bordered focus:outline-none ${width} input-${color} `}
+        className={`input input-bordered focus:outline-none ${width} ${classes.color[color]}`}
         onChange={onChange}
       />
     </div>

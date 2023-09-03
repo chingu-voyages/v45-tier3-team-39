@@ -1,1 +1,1 @@
-//components/Pages/Dashboard
+//pages/Login/Dashboard

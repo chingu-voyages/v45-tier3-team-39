@@ -1,4 +1,4 @@
-//components/Pages/Login
+//pages/Login/Login
 
 import React, { useState } from 'react';
 import { TextInput } from '../../components/Input/TextInput/TextInput';
@@ -16,7 +16,7 @@ const Login = () => {
       localStorage.setItem('token', 'example_token');
       // navigate('/dashboard');
     } else {
-      alert('Login failed ');
+      console.log('Login failed');
     }
   };
 
