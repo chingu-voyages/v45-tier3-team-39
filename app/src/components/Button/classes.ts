@@ -23,6 +23,7 @@ const classes: ButtonClasses = {
     light: 'btn-light',
     dark: 'btn-dark',
     link: 'btn-link',
+    accent: 'btn-accent',
   },
   size: {
     xs: 'btn-xs',

@@ -17,6 +17,7 @@ type ButtonColor =
   | 'info'
   | 'light'
   | 'dark'
-  | 'link';
+  | 'link'
+  | 'accent';
 
 export type { ButtonProps, ButtonVariant, ButtonSize, ButtonColor };

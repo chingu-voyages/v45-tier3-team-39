@@ -20,7 +20,8 @@ type IconButtonColor =
   | 'info'
   | 'light'
   | 'dark'
-  | 'link';
+  | 'link'
+  | 'accent';
 
 export type {
   IconButtonProps,

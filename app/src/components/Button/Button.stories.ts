@@ -1,5 +1,5 @@
+import type { StoryObj } from '@storybook/react';
 import { Button } from './Button';
-import { ButtonProps } from './types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -13,8 +13,10 @@ export default {
   },
 };
 
+type Story = StoryObj<typeof Button>;
+
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary: { args: ButtonProps } = {
+export const Primary: Story = {
   args: {
     color: 'primary',
     title: 'Primary Button',
@@ -22,7 +24,7 @@ export const Primary: { args: ButtonProps } = {
   },
 };
 
-export const Secondary: { args: ButtonProps } = {
+export const Secondary: Story = {
   args: {
     color: 'secondary',
     title: 'Secondary Button',
@@ -30,7 +32,7 @@ export const Secondary: { args: ButtonProps } = {
   },
 };
 
-export const Large: { args: ButtonProps } = {
+export const Large: Story = {
   args: {
     size: 'lg',
     title: 'Large Button',
@@ -38,7 +40,7 @@ export const Large: { args: ButtonProps } = {
   },
 };
 
-export const Small: { args: ButtonProps } = {
+export const Small: Story = {
   args: {
     size: 'sm',
     title: 'Small Button',
@@ -46,7 +48,7 @@ export const Small: { args: ButtonProps } = {
   },
 };
 
-export const Outlined: { args: ButtonProps } = {
+export const Outlined: Story = {
   args: {
     variant: 'outline',
     title: 'Outlined Button',
@@ -54,7 +56,7 @@ export const Outlined: { args: ButtonProps } = {
   },
 };
 
-export const Ghost: { args: ButtonProps } = {
+export const Ghost: Story = {
   args: {
     variant: 'ghost',
     title: 'Ghost Button',
