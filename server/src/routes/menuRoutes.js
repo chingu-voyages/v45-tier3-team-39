@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const { createdMenu, updateMenu, getAllMenu,getOneMenu, deleteMenu} = require('../controllers/menuController')
-const { protect, admin } = require ("../middleware/authMiddleware");
+import { createdMenu, updateMenu, getAllMenu,getOneMenu, deleteMenu} from'../controllers/menuController';
+import { protect, admin } from "../middleware/authMiddleware";
 
 
 router.route("/").post(protect,admin, createdMenu).get(getAllMenu);
@@ -12,4 +12,4 @@ router
   .get(getOneMenu);
  
  
-module.exports = router
+  export default router

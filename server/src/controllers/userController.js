@@ -1,43 +1,38 @@
 const asyncHandler = require('express-async-handler');
-const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-const generateToken = require('../utils/generateToken')
-
+const generateToken = require('../utils/generateToken');
 
 //@desc   signup new user
 //@route  POST /api/users/signup
 //@access Public
 const signup = asyncHandler(async (req, res) => {
+  let { username, email, password } = req.body;
 
-    let { username, email, password } = req.body;
-  
-    const userExist = await User.findOne({ email });
-    if (userExist) {
-      res.status(400);
-      throw new Error("User already exists");
-    }
-  
-    const user = await User.create({
-      username,
-      email,
-      password
-    });
-    if (user) {
-      res.status(201).json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        isAdmin: user.isAdmin,
-        token: generateToken(user._id),
-      });
-    } else {
-      res.status(400);
-      throw new Error("Invalid user data");
-    }
+  const userExist = await User.findOne({ email });
+  if (userExist) {
+    res.status(400);
+    throw new Error('User already exists');
+  }
+
+  const user = await User.create({
+    username,
+    email,
+    password,
   });
+  if (user) {
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid user data');
+  }
+});
 
-
-  
 // @desc     Auth the user & get token
 // @route    GET /api/users/login
 // @access   Public
@@ -54,12 +49,8 @@ const login = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401);
-    throw new Error("Invalid username or password");
+    throw new Error('Invalid username or password');
   }
 });
 
-  
-  module.exports ={
-    signup,
-    login
-  }
+export { signup, login };

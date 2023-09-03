@@ -38,4 +38,4 @@ const menuItemSchema = new Schema<IMenuItem>({
 });
 
 const MenuItem = model<IMenuItem>('MenuItem', menuItemSchema);
-module.exports = MenuItem;
+export default MenuItem

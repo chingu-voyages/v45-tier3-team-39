@@ -1,5 +1,5 @@
-const asyncHandler = require('express-async-handler');
-const MenuItem = require('../models/Menuitem');
+import asyncHandler from 'express-async-handler';
+import MenuItem from '../models/Menuitem';
 
 
 
@@ -7,7 +7,7 @@ const MenuItem = require('../models/Menuitem');
 // @desc    Create a menu
 // @route   POST /api/menu
 // @access  Private/admin
-const createdMenu = asyncHandler(async (req, res) => {
+export const createdMenu = asyncHandler(async (req, res) => {
  let menu = new MenuItem({
   name: req.body.name,
   category:req.body.category,
@@ -29,7 +29,7 @@ const createdMenu = asyncHandler(async (req, res) => {
   // @route   PUT /api/menu:id
   // @access  Private/admin
   
-const updateMenu = asyncHandler(async (req, res) => {
+  export const updateMenu = asyncHandler(async (req, res) => {
   const { name, category, description, price, image_url } = req.body;
   const menuItemId = req.params.id;
 
@@ -56,7 +56,7 @@ const updateMenu = asyncHandler(async (req, res) => {
 // @route   DELETE /api/menu:id
 // @access  Private/admin
 
-const deleteMenu = asyncHandler(async (req, res) => {
+export const deleteMenu = asyncHandler(async (req, res) => {
   const menuItemId = req.params.id;
 
   const menuItem = await MenuItem.findById(menuItemId);
@@ -75,7 +75,7 @@ const deleteMenu = asyncHandler(async (req, res) => {
 //@route  GET /api/menu
 //@access public
   
-  const getAllMenu = asyncHandler(async (req, res) => {
+export const getAllMenu = asyncHandler(async (req, res) => {
     const menus = await MenuItem.find();
     if (!menus) {
       res.status(404);
@@ -89,7 +89,7 @@ const deleteMenu = asyncHandler(async (req, res) => {
 //@route  GET /api/menu:id
 //@access public
   
-const getOneMenu = asyncHandler(async (req, res) => {
+export const getOneMenu = asyncHandler(async (req, res) => {
     const menus = await MenuItem.findById(req.params.id);
     if (!menus) {
       res.status(404);
@@ -99,10 +99,3 @@ const getOneMenu = asyncHandler(async (req, res) => {
   });
 
 
-module.exports = {
-createdMenu,
-updateMenu,
-getAllMenu,
-getOneMenu,
-deleteMenu
-}
