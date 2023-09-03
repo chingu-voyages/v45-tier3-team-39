@@ -18,6 +18,7 @@ type BadgeColor =
   | 'info'
   | 'light'
   | 'dark'
-  | 'link';
+  | 'link'
+  | 'accent';
 
 export { BadgeProps, BadgeColor, BadgeSize, BadgeVariant };
