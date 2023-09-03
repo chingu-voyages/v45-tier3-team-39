@@ -14,4 +14,4 @@ router
   .put(protect, admin, updateCategory)
   .delete(protect, admin, deleteCategory);
 
-module.exports = router;
+export default router;
