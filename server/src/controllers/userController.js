@@ -53,7 +53,4 @@ const login = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = {
-  signup,
-  login,
-};
+export { signup, login };
