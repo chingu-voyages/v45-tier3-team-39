@@ -9,7 +9,7 @@ import { useRecoilValue } from 'recoil';
 import { basketState } from '../../atoms';
 
 export const MenuPage = (): JSX.Element => {
-  const [category, SetCategory] = useState('All');
+  const [category, SetCategory] = useState('all');
   const [itemId, setItemId] = useState('');
   const basket = useRecoilValue(basketState);
 
