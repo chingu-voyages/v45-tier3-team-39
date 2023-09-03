@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from './IconButton';
-import { InfoIcon } from '../Icons/InfoIcon';
-import { HomeIcon } from '../Icons/HomeIcon';
+import { InfoIcon } from 'src/components/Icons/InfoIcon';
+import { HomeIcon } from 'src/components/Icons/HomeIcon';
 import { IconButtonProps } from './types';
 
 export default {

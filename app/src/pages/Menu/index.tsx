@@ -1,12 +1,11 @@
-import React from 'react';
-import CatDropdown from '../../components/CatDropdown';
-import MenuCard from '../../components/MenuCard';
-import CardModal from '../../components/CardModal';
-import { items, MenuItem } from '../../seeds';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { basketState } from '../../atoms';
+import CatDropdown from 'src/components/CatDropdown';
+import MenuCard from 'src/components/MenuCard';
+import CardModal from 'src/components/CardModal';
+import { items, MenuItem } from 'src/seeds';
+import { basketState } from 'src/atoms';
 
 export const MenuPage = (): JSX.Element => {
   const [category, SetCategory] = useState('All');
