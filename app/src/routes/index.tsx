@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { MenuPage } from '../pages';
+import { MenuPage } from 'src/pages';
 
 export const router = createBrowserRouter([
   {
