@@ -1,89 +1,89 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { basketState } from '../atoms';
+import {
+  findArrayIndex,
+  replaceItemAtIndex,
+  removeItemAtIndex,
+} from 'src/utils';
+import { BasketItem, basketState } from 'src/atoms';
+import { Button } from 'src/components/Button/Button';
 
 interface ModalProps {
-  details: {
-    item_id: string;
-    img_url: string;
-    name: string;
-    category: string;
-    description: string;
-    price: number;
-  };
-  setItemId: (itemId: string) => void;
-}
-
-type BasketItem = {
+  item_id: string;
   img_url: string;
   name: string;
   category: string;
   description: string;
   price: number;
-  quantity: number;
-};
-
-declare global {
-  interface Window {
-    'ordr-modal': {
-      showModal: () => void;
-    };
-  }
+  onClose: () => void;
 }
 
-const CardModal = ({ details, setItemId }: ModalProps): JSX.Element => {
-  const { img_url, name, category, description, price } = details;
-  const [itemsInBasket, setItemsInBasket] = useRecoilState(basketState);
-  const [inputQty, setInputQty] = useState('1');
+const getItem = (id: string, items: BasketItem[]) =>
+  items.find((item) => item.id === id);
 
-  useEffect(() => {
-    window['ordr-modal'].showModal();
-  }, []);
+export const CardModal = ({
+  item_id,
+  img_url,
+  name,
+  category,
+  description,
+  price,
+  onClose,
+}: ModalProps) => {
+  const [itemsInOrder, setItemsInOrder] = useRecoilState(basketState);
+  const item = getItem(item_id, itemsInOrder);
+  const [inputQty, setInputQty] = useState(item?.quantity || 1);
 
-  const handlePlaceOrder = () => {
-    const orderToSend: BasketItem = {
-      img_url: '',
-      name: '',
-      category: '',
-      description: '',
-      price: 0,
-      quantity: 0,
-    };
-
-    //check if item being added is already in the basket
-    const repeatedItem = itemsInBasket.find((item) => item.name === name);
-    if (repeatedItem) {
-      //populate orderToSend object with details of item
-      for (const key in details) {
-        (orderToSend as any)[key] = (details as any)[key];
-      }
-      //add existent item units to the new item units
-      orderToSend.quantity = parseInt(inputQty) + repeatedItem.quantity;
-      //calculate array of rest of items
-      const nonRepeatItems = itemsInBasket.filter((item) => item.name !== name);
-      setItemsInBasket([...nonRepeatItems, orderToSend]);
-    } else {
-      for (const key in details) {
-        (orderToSend as any)[key] = (details as any)[key];
-      }
-      orderToSend.quantity = parseInt(inputQty);
-      setItemsInBasket([...itemsInBasket, orderToSend]);
+  // function to add items to a basket which takes into consideration if the item is already in the basket
+  const handleAddToOrder = () => {
+    if (inputQty < 0) {
+      alert('Please enter a valid quantity');
+      return;
     }
-    setInputQty('1');
-    setItemId('');
-  };
 
-  const handleModalClose = () => {
-    setItemId('');
+    let newItems: BasketItem[];
+
+    // if item already in order, update quantity
+    if (item) {
+      const index = findArrayIndex(itemsInOrder, (item) => item.id === item_id);
+
+      switch (inputQty) {
+        // if quantity is 0, remove item from order
+        case 0:
+          newItems = removeItemAtIndex(itemsInOrder, index);
+          break;
+        // if quantity is greater than 0, update quantity
+        default:
+          newItems = replaceItemAtIndex(itemsInOrder, index, {
+            ...item,
+            quantity: inputQty,
+          });
+      }
+    } else {
+      // if item not in order, add item to order
+      newItems = [
+        ...itemsInOrder,
+        {
+          id: item_id,
+          quantity: inputQty,
+          name,
+          price,
+          category,
+          description,
+        },
+      ];
+    }
+    setItemsInOrder(newItems);
+    onClose();
   };
 
   return (
-    <dialog id="ordr-modal" className="modal">
+    <dialog id="ordr-modal" className="modal" open>
       <div className="modal-box">
         <button
           className="btn btn-circle btn-sm absolute right-2 top-2 focus:outline-none"
-          onClick={handleModalClose}
+          onClick={onClose}
         >
           ✕
         </button>
@@ -102,17 +102,18 @@ const CardModal = ({ details, setItemId }: ModalProps): JSX.Element => {
             type="number"
             name="quantity"
             value={inputQty}
-            onChange={(e) => setInputQty(e.target.value)}
+            onChange={(e) => setInputQty(+e.target.value)}
             className="input input-bordered max-w-3 focus:outline-none"
           />
           <p className="text-lg">£{price}</p>
         </div>
-        <button onClick={handlePlaceOrder} className="btn btn-accent btn-block">
-          Add to Orders
-        </button>
+        <div className="card-actions justify-end">
+          <Button
+            title={`${item ? 'Update' : 'Add'} to Order`}
+            onClick={handleAddToOrder}
+          />
+        </div>
       </div>
     </dialog>
   );
 };
-
-export default CardModal;

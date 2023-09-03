@@ -7,7 +7,7 @@ export const Card = ({ title, description, Image, Actions }: CardProps) => {
       <figure>{Image}</figure>
       <div className="card-body">
         <h2 className="card-title font-bold">{title}</h2>
-        <p>{description}</p>
+        <div>{description}</div>
         {Actions}
       </div>
     </div>

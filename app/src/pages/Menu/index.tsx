@@ -3,24 +3,15 @@ import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import CatDropdown from 'src/components/CatDropdown';
 import MenuCard from 'src/components/MenuCard';
-import CardModal from 'src/components/CardModal';
+import { CardModal } from 'src/components/CardModal';
 import { items, MenuItem } from 'src/seeds';
 import { basketState } from 'src/atoms';
+import { categories } from 'src/mocks/categories';
 
 export const MenuPage = (): JSX.Element => {
-  const [category, SetCategory] = useState('All');
-  const [itemId, setItemId] = useState('');
+  const [category, SetCategory] = useState<(typeof categories)[number]>('all');
+  const [selectedItem, setSelectedItem] = useState<MenuItem>();
   const basket = useRecoilValue(basketState);
-
-  const defaultItem: MenuItem = {
-    //typescript fallback object
-    item_id: '',
-    img_url: '',
-    name: '',
-    category: '',
-    description: '',
-    price: 0,
-  };
 
   let catItems: MenuItem[] = [];
   if (category !== 'all') {
@@ -28,8 +19,6 @@ export const MenuPage = (): JSX.Element => {
   } else {
     catItems = items;
   }
-
-  const itemDetails = catItems.find((item) => item.item_id === itemId);
 
   const basketUnits =
     basket.length > 0
@@ -67,15 +56,22 @@ export const MenuPage = (): JSX.Element => {
               category={item.category}
               price={item.price}
               img_url={item.img_url}
-              onSelect={setItemId}
               item_id={item.item_id}
+              onAdd={() => {
+                setSelectedItem(item);
+              }}
             />
           );
         })}
-        {itemId && (
+        {selectedItem && (
           <CardModal
-            details={itemDetails || defaultItem}
-            setItemId={setItemId}
+            item_id={selectedItem.item_id}
+            name={selectedItem.name}
+            img_url={selectedItem.img_url}
+            category={selectedItem.category}
+            description={selectedItem.description}
+            price={selectedItem.price}
+            onClose={() => setSelectedItem(undefined)}
           />
         )}
       </div>

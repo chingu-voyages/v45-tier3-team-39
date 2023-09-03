@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
-type BasketItem = {
-  img_url: string;
+export type BasketItem = {
+  id: string;
   name: string;
   category: string;
   description: string;

@@ -1,23 +1,22 @@
 import React from 'react';
+import { categories } from 'src/mocks/categories';
 
-interface CatDropdownProps {
-  onSetCategory: (category: string) => void;
+interface CategoryDropdownProps {
+  onSetCategory: (category: (typeof categories)[number]) => void;
 }
 
-const CatDropdown = ({ onSetCategory }: CatDropdownProps): JSX.Element => {
-  const tempCategories: string[] = [
-    'all',
-    'starters',
-    'mains',
-    'pizzas',
-    'drinks',
-    'desserts',
-    'extras',
-  ];
-  //logic for loading categories from API will be here instead of temp array above
+const CategoryDropdown = ({
+  onSetCategory,
+}: CategoryDropdownProps): JSX.Element => {
+  const handleCloseDropDown = () => {
+    const elem: any = document.activeElement;
+    if (elem) {
+      elem?.blur();
+    }
+  };
 
   return (
-    <div className="dropdown dropdown-hover">
+    <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost btn-circle">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,11 +37,16 @@ const CatDropdown = ({ onSetCategory }: CatDropdownProps): JSX.Element => {
         tabIndex={0}
         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
       >
-        {tempCategories.map((cat) => {
+        {categories.map((category) => {
           return (
-            <li key={cat}>
-              <button onClick={() => onSetCategory(cat)}>
-                <p className="text-base">{cat}</p>
+            <li key={category}>
+              <button
+                onClick={() => {
+                  onSetCategory(category);
+                  handleCloseDropDown();
+                }}
+              >
+                <p className="text-base">{category}</p>
               </button>
             </li>
           );
@@ -52,4 +56,4 @@ const CatDropdown = ({ onSetCategory }: CatDropdownProps): JSX.Element => {
   );
 };
 
-export default CatDropdown;
+export default CategoryDropdown;
