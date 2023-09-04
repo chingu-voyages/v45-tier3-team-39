@@ -19,18 +19,6 @@ const classes: FileInputClasses = {
     dark: 'file-input-dark',
     link: 'file-input-link',
   },
-  /* size: {
-    xs: 'file-input-xs',
-    sm: 'file-input-sm',
-    md: 'file-input-md',
-    lg: 'file-input-lg',
-    wide: 'file-input-wide',
-  },
-  variant: {
-    outline: 'file-input-outline',
-    ghost: 'file-input-ghost',
-    solid: 'file-input-solid',
-  },*/
 };
 
 export default classes;

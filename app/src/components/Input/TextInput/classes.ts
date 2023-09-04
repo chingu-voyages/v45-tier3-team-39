@@ -19,18 +19,6 @@ const classes: textInputClasses = {
     dark: 'input-dark',
     link: 'input-link',
   },
-  /* size: {
-    xs: 'input-xs',
-    sm: 'input-sm',
-    md: 'input-md',
-    lg: 'input-lg',
-    wide: 'input-wide',
-  },
-  variant: {
-    outline: 'input-outline',
-    ghost: 'input-ghost',
-    solid: 'input-solid',
-  },*/
 };
 
 export default classes;
