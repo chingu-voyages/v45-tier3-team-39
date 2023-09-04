@@ -24,11 +24,6 @@ const orderSchema = new Schema<Order>({
   },
   items: [
     {
-      menuItem: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'MenuItem',
-      },
       name: {
         type: String,
         required: true,
