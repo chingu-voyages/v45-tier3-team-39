@@ -1,29 +1,18 @@
-//pages/Login/Login
-
 import React, { useState } from 'react';
 import { TextInput } from '../../components/Input/TextInput/TextInput';
 import { Button } from '../../components/Button/Button';
-//import { useNavigate } from 'react-router-dom';
 
 export type LoginProps = {
-  handleLogin: (redirectPath: string) => void;
+  handleLogin: (
+    username: string,
+    password: string,
+    redirectPath: string
+  ) => void;
 };
 
 const Login = ({ handleLogin }: LoginProps) => {
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  //const navigate = useNavigate();
-
-  const handleLoginClick = () => {
-    if (userName.trim() !== '' && password.trim() !== '') {
-      console.log('Login success');
-      localStorage.setItem('token', 'example_token');
-      // navigate('/dashboard');
-      handleLogin('/dashboard');
-    } else {
-      console.log('Login failed');
-    }
-  };
 
   return (
     <>
@@ -52,7 +41,7 @@ const Login = ({ handleLogin }: LoginProps) => {
             <div className="text-center">
               <Button
                 title="LOGIN"
-                onClick={handleLoginClick}
+                onClick={() => handleLogin(userName, password, '/dashboard')}
                 color="accent"
                 size="wide"
               />
