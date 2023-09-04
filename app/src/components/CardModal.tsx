@@ -101,6 +101,7 @@ export const CardModal = ({
           <input
             type="number"
             name="quantity"
+            min={0}
             value={inputQty}
             onChange={(e) => setInputQty(+e.target.value)}
             className="input input-bordered max-w-3 focus:outline-none"
@@ -109,7 +110,7 @@ export const CardModal = ({
         </div>
         <div className="card-actions justify-end">
           <Button
-            title={`${item ? 'Update' : 'Add'} to Order`}
+            title={`${item ? 'Update' : 'Add to'}  Order`}
             onClick={handleAddToOrder}
           />
         </div>
