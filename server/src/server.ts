@@ -10,6 +10,7 @@ import { notFound, errorHandler } from './middleware/errorHandler';
 import restaurantRouter from './routes/restaurant';
 import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
+import menuRoutes from './routes/menuRoutes';
 import orderRouter from './routes/order';
 
 const app = express();
@@ -29,6 +30,7 @@ const runServer = async () => {
     app.use('/api/restaurant', restaurantRouter);
     app.use('/api/user', userRoutes);
     app.use('/api/categories', categoryRoutes);
+    app.use('/api/menu-items', menuRoutes)
     app.use('/api/order', orderRouter);
 
     app.get('/', (_, res) => {
