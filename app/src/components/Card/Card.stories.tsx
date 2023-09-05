@@ -2,7 +2,7 @@ import React from 'react';
 import { StoryObj } from '@storybook/react';
 import { Card } from './Card';
 import { CardProps } from './types';
-import { Button } from 'src/components/Button/Button';
+import { Button } from '../Button/Button';
 
 export default {
   title: 'Card',
