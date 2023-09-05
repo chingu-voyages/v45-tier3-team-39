@@ -30,6 +30,7 @@ const classes: ButtonClasses = {
     sm: 'btn-sm',
     md: 'btn-md',
     lg: 'btn-lg',
+    wide: 'btn-wide',
   },
   variant: {
     outline: 'btn-outline',

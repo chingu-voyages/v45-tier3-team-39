@@ -7,7 +7,7 @@ import { HomeIcon } from 'src/components/Icons/HomeIcon';
 type Story = StoryObj<typeof IconButton>;
 
 export default {
-  title: 'IconButton',
+  title: 'Buttons/IconButton',
   component: IconButton,
   tags: ['autodocs'],
   argTypes: {
