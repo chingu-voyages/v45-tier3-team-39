@@ -1,8 +1,8 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
 import { IconButton } from './IconButton';
-import { InfoIcon } from 'src/components/Icons/InfoIcon';
-import { HomeIcon } from 'src/components/Icons/HomeIcon';
+import { InfoIcon } from '../Icons/InfoIcon';
+import { HomeIcon } from '../Icons/HomeIcon';
 
 type Story = StoryObj<typeof IconButton>;
 
