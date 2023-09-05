@@ -5,7 +5,7 @@ import {
   IconButtonVariant,
 } from './types';
 
-type ButtonClasses = {
+type IconButtonClasses = {
   color: {
     [key in IconButtonColor]: `btn-${key}`;
   };
@@ -20,7 +20,7 @@ type ButtonClasses = {
   };
 };
 
-const classes: ButtonClasses = {
+const classes: IconButtonClasses = {
   color: {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
@@ -31,6 +31,7 @@ const classes: ButtonClasses = {
     light: 'btn-light',
     dark: 'btn-dark',
     link: 'btn-link',
+    accent: 'btn-accent',
   },
   size: {
     xs: 'btn-xs',
