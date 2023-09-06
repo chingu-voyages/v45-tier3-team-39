@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import MenuItem from '../models/Menuitem';
+import MenuItem from '../models/MenuItem';
 
 // @desc    Create a menu
 // @route   POST /api/menu
