@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import CatDropdown from 'src/components/CatDropdown';
-import MenuCard from 'src/components/MenuCard';
-import { CardModal } from 'src/components/CardModal';
+import CatDropdown from 'src/components/Dropdowns/CatDropdown';
+import MenuCard from 'src/components/Card/MenuCard';
+import { CardModal } from 'src/components/Modals/CardModal';
 import { items, MenuItem } from 'src/seeds';
 import { basketState } from 'src/atoms';
 import { categories } from 'src/mocks/categories';
