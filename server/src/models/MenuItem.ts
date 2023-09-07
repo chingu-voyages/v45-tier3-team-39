@@ -1,8 +1,8 @@
-import { Document, Schema, model, Types } from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 
 interface IMenuItem extends Document {
   name: string;
-  category: Types.ObjectId;
+  categoryId: Types.ObjectId;
   description: string;
   price: number;
   image_url: string;
@@ -14,7 +14,7 @@ const menuItemSchema = new Schema<IMenuItem>({
     type: String,
     required: true,
   },
-  category: {
+  categoryId: {
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'Category',
@@ -38,4 +38,5 @@ const menuItemSchema = new Schema<IMenuItem>({
 });
 
 const MenuItem = model<IMenuItem>('MenuItem', menuItemSchema);
-export default MenuItem
+
+export default MenuItem;
