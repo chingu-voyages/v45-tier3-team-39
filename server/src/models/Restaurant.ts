@@ -1,13 +1,7 @@
-import { Document, Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { Restaurant } from '@ordr/types';
 
-interface IRestaurant extends Document {
-  name: string;
-  img_url: string;
-  numberOfTables: number;
-  createdAt: Date;
-}
-
-const restaurantSchema = new Schema<IRestaurant>({
+const restaurantSchema = new Schema<Restaurant>({
   name: {
     type: 'string',
     required: true,
@@ -26,6 +20,6 @@ const restaurantSchema = new Schema<IRestaurant>({
   },
 });
 
-const Restaurant = model<IRestaurant>('Restaurant', restaurantSchema);
+const Restaurant = model('Restaurant', restaurantSchema);
 
 export default Restaurant;

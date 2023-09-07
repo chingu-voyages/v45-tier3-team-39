@@ -1,3 +1,4 @@
+import { Category } from '@ordr/types';
 import React from 'react';
 import { Badge } from 'src/components/Badge/Badge';
 import { Card } from 'src/components/Card/Card';
@@ -6,7 +7,7 @@ interface MenuCardProps {
   item_id: string;
   image_url: string;
   name: string;
-  category: { name: string; id: string };
+  category: Category;
   price: number;
   onAdd: () => void;
 }

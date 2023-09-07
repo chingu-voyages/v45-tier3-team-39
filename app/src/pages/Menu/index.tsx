@@ -4,8 +4,8 @@ import { useRecoilValue } from 'recoil';
 import CatDropdown from 'src/components/Dropdowns/CatDropdown';
 import MenuCard from 'src/components/Card/MenuCard';
 import { CardModal } from 'src/components/Modals/CardModal';
-import { MenuItem } from 'src/seeds';
 import { basketState } from 'src/atoms';
+import { MenuItem } from '@ordr/types';
 
 export const MenuPage = (): JSX.Element => {
   // const [category, SetCategory] = useState<(typeof categories)[number]>('all');

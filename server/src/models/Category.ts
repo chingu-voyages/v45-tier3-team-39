@@ -1,11 +1,7 @@
-import { Document, Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { Category } from '@ordr/types';
 
-interface ICategory extends Document {
-  name: string;
-  createdAt: Date;
-}
-
-const categorySchema = new Schema<ICategory>({
+const categorySchema = new Schema<Category>({
   name: {
     type: String,
     required: [true, 'Please provide category name'],
@@ -16,6 +12,6 @@ const categorySchema = new Schema<ICategory>({
   },
 });
 
-const Category = model<ICategory>('Category', categorySchema);
+const Category = model('Category', categorySchema);
 
 export default Category;

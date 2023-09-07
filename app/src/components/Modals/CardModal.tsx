@@ -9,12 +9,13 @@ import {
 import { BasketItem, basketState } from 'src/atoms';
 import { Button } from 'src/components/Button/Button';
 import { Badge } from '../Badge/Badge';
+import { Category } from '@ordr/types';
 
 interface ModalProps {
   item_id: string;
   img_url: string;
   name: string;
-  category: { id: string; name: string };
+  category: Category;
   description: string;
   price: number;
   onClose: () => void;
