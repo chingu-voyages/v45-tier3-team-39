@@ -14,6 +14,3 @@ const errorHandler = (err, _, res) => {
 };
 
 export { notFound, errorHandler };
-
-
-
