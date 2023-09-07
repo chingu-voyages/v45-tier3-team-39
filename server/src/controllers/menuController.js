@@ -76,6 +76,12 @@ export const getAllMenu = asyncHandler(async (req, res) => {
         as: 'category',
       },
     },
+    {
+      $unwind: '$category',
+    },
+    {
+      $unset: 'categoryId',
+    },
   ]);
   if (!menus) {
     res.status(404);

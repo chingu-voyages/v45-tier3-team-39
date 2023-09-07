@@ -57,7 +57,7 @@ export const MenuPage = (): JSX.Element => {
               <MenuCard
                 name={item.name}
                 key={item._id}
-                categories={item.category}
+                category={item.category}
                 price={item.price}
                 image_url={item.image_url}
                 item_id={item._id}
@@ -72,7 +72,7 @@ export const MenuPage = (): JSX.Element => {
             item_id={selectedItem._id}
             name={selectedItem.name}
             img_url={selectedItem.image_url}
-            categories={selectedItem.category}
+            category={selectedItem.category}
             description={selectedItem.description}
             price={selectedItem.price}
             onClose={() => setSelectedItem(undefined)}

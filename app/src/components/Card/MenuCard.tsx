@@ -6,7 +6,7 @@ interface MenuCardProps {
   item_id: string;
   image_url: string;
   name: string;
-  categories: { name: string; id: string }[];
+  category: { name: string; id: string };
   price: number;
   onAdd: () => void;
 }
@@ -14,7 +14,7 @@ interface MenuCardProps {
 const MenuCard = ({
   name,
   image_url,
-  categories,
+  category,
   price,
   onAdd,
 }: MenuCardProps): JSX.Element => {
@@ -25,15 +25,12 @@ const MenuCard = ({
         Image={<img src={image_url} alt={name} />}
         description={
           <div className="flex justify-between">
-            {categories?.map((category) => (
-              <Badge
-                key={category.id}
-                label={category.name}
-                variant="outline"
-                color="accent"
-                size="sm"
-              />
-            ))}
+            <Badge
+              label={category.name}
+              variant="outline"
+              color="accent"
+              size="sm"
+            />
             <div className="font-semibold">£{price}</div>
           </div>
         }
