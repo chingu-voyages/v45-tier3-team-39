@@ -3,7 +3,7 @@ import { atom } from 'recoil';
 export type BasketItem = {
   id: string;
   name: string;
-  category: string;
+  categories: { name: string; id: string }[];
   description: string;
   price: number;
   quantity: number;

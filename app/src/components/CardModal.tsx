@@ -13,7 +13,7 @@ interface ModalProps {
   item_id: string;
   img_url: string;
   name: string;
-  category: string;
+  categories: { id: string; name: string }[];
   description: string;
   price: number;
   onClose: () => void;
@@ -26,7 +26,7 @@ export const CardModal = ({
   item_id,
   img_url,
   name,
-  category,
+  categories,
   description,
   price,
   onClose,
@@ -69,7 +69,7 @@ export const CardModal = ({
           quantity: inputQty,
           name,
           price,
-          category,
+          categories,
           description,
         },
       ];
@@ -92,9 +92,14 @@ export const CardModal = ({
         </figure>
         <div className="flex items-center">
           <h2 className="text-2xl font-bold pr-2">{name}</h2>
-          <div className="badge badge-accent badge-outline badge-sm">
-            {category}
-          </div>
+          {categories?.map((category) => (
+            <div
+              key={category.id}
+              className="badge badge-accent badge-outline badge-sm"
+            >
+              {category.name}
+            </div>
+          ))}
         </div>
         <p className="py-4">{description}</p>
         <div className="flex justify-between items-center pb-4">
