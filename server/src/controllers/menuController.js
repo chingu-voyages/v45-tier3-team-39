@@ -1,35 +1,31 @@
 import asyncHandler from 'express-async-handler';
-import MenuItem from '../models/Menuitem';
-
-
-
+import MenuItem from '../models/MenuItem';
 
 // @desc    Create a menu
 // @route   POST /api/menu
 // @access  Private/admin
 export const createdMenu = asyncHandler(async (req, res) => {
- let menu = new MenuItem({
-  name: req.body.name,
-  category:req.body.category,
-  description:req.body.description,
-  price:req.body.price,
-  image_url:req.body.image_url
-    })
-    menu = await menu.save();
-
-    if(!menu){
-        res.status(404);
-    throw new Error('this menu cannot be created');
-    }
-    res.status(201).json(menu)
-    
+  let menu = new MenuItem({
+    name: req.body.name,
+    categoryId: req.body.categoryId,
+    description: req.body.description,
+    price: req.body.price,
+    image_url: req.body.image_url,
   });
+  menu = await menu.save();
 
-  // @desc    update a menu
-  // @route   PUT /api/menu:id
-  // @access  Private/admin
-  
-  export const updateMenu = asyncHandler(async (req, res) => {
+  if (!menu) {
+    res.status(404);
+    throw new Error('this menu cannot be created');
+  }
+  res.status(201).json(menu);
+});
+
+// @desc    update a menu
+// @route   PUT /api/menu:id
+// @access  Private/admin
+
+export const updateMenu = asyncHandler(async (req, res) => {
   const { name, category, description, price, image_url } = req.body;
   const menuItemId = req.params.id;
 
@@ -49,9 +45,6 @@ export const createdMenu = asyncHandler(async (req, res) => {
   res.json(updatedMenuItem);
 });
 
-
-
-
 // @desc    delete a menu
 // @route   DELETE /api/menu:id
 // @access  Private/admin
@@ -69,33 +62,37 @@ export const deleteMenu = asyncHandler(async (req, res) => {
   res.json({ message: 'Menu item removed' });
 });
 
-
-
 //@desc   get all menu
 //@route  GET /api/menu
 //@access public
-  
-export const getAllMenu = asyncHandler(async (req, res) => {
-    const menus = await MenuItem.find();
-    if (!menus) {
-      res.status(404);
-      throw new Error("Menu Not Found");
-    }
-    res.json(menus);
-  });
 
-  
+export const getAllMenu = asyncHandler(async (req, res) => {
+  const menus = await MenuItem.aggregate([
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'categoryId',
+        foreignField: '_id',
+        as: 'category',
+      },
+    },
+  ]);
+  if (!menus) {
+    res.status(404);
+    throw new Error('Menu Not Found');
+  }
+  res.json(menus);
+});
+
 //@desc   get all menu
 //@route  GET /api/menu:id
 //@access public
-  
+
 export const getOneMenu = asyncHandler(async (req, res) => {
-    const menus = await MenuItem.findById(req.params.id);
-    if (!menus) {
-      res.status(404);
-      throw new Error("Menu Not Found");
-    }
-    res.json(menus);
-  });
-
-
+  const menus = await MenuItem.findById(req.params.id);
+  if (!menus) {
+    res.status(404);
+    throw new Error('Menu Not Found');
+  }
+  res.json(menus);
+});
