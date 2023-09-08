@@ -7,6 +7,102 @@ export type MenuItem = {
   img_url: string;
 };
 
+type OrderItem = {
+  name: string;
+  category: string;
+  quantity: number;
+  price: number;
+  subtotal: number;
+};
+
+export type Order = {
+  _id: string;
+  table: number;
+  items: OrderItem[];
+  totalPrice: number;
+  orderStatus: string;
+  createdAt: string;
+};
+
+export const orders: Order[] = [
+  {
+    _id: 'df6',
+    table: 3,
+    items: [
+      {
+        name: 'Pepperoni',
+        category: 'pizzas',
+        quantity: 2,
+        price: 14,
+        subtotal: 28,
+      },
+      {
+        name: 'Margherita',
+        category: 'pizzas',
+        quantity: 3,
+        price: 12,
+        subtotal: 36,
+      },
+    ],
+    totalPrice: 64,
+    orderStatus: 'preparing',
+    createdAt: new Date().toString(),
+  },
+  {
+    _id: 'dwetf6',
+    table: 8,
+    items: [
+      {
+        name: 'Londonetti',
+        category: 'pizzas',
+        quantity: 3,
+        price: 8,
+        subtotal: 24,
+      },
+      {
+        name: 'PiriPiri',
+        category: 'pizzas',
+        quantity: 2,
+        price: 15,
+        subtotal: 30,
+      },
+    ],
+    totalPrice: 54,
+    orderStatus: 'ready',
+    createdAt: new Date().toString(),
+  },
+  {
+    _id: 'dwrZZZf6',
+    table: 15,
+    items: [
+      {
+        name: 'Bulldozzer',
+        category: 'heavy drinks',
+        quantity: 3,
+        price: 15,
+        subtotal: 45,
+      },
+      {
+        name: 'SledgeHammer',
+        category: 'heavy drinks',
+        quantity: 2,
+        price: 15,
+        subtotal: 30,
+      },
+      {
+        name: 'Oatty',
+        category: 'alternative miks',
+        quantity: 2,
+        price: 3,
+        subtotal: 6,
+      },
+    ],
+    totalPrice: 81,
+    orderStatus: 'preparing',
+    createdAt: new Date().toString(),
+  },
+];
+
 export const items: MenuItem[] = [
   {
     item_id: '3',
