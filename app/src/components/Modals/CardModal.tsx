@@ -37,11 +37,6 @@ export const CardModal = ({
 
   // function to add items to a basket which takes into consideration if the item is already in the basket
   const handleAddToOrder = () => {
-    if (inputQty < 0) {
-      alert('Please enter a valid quantity');
-      return;
-    }
-
     let newItems: BasketItem[];
 
     // if item already in order, update quantity
