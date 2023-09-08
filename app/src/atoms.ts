@@ -13,3 +13,25 @@ export const basketState = atom<BasketItem[]>({
   key: 'basketState',
   default: [],
 });
+
+type OrderItem = {
+  name: string;
+  category: string;
+  quantity: number;
+  price: number;
+  subtotal: number;
+};
+
+export type Order = {
+  _id: string;
+  table: number;
+  items: OrderItem[];
+  totalPrice: number;
+  orderStatus: string;
+  createdAt: string;
+};
+
+export const ordersState = atom<Order[]>({
+  key: 'ordersState',
+  default: [],
+});
