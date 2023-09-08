@@ -45,7 +45,7 @@ export const orders: Order[] = [
       },
     ],
     totalPrice: 64,
-    orderStatus: 'preparing',
+    orderStatus: 'ordered',
     createdAt: new Date().toString(),
   },
   {
@@ -68,7 +68,7 @@ export const orders: Order[] = [
       },
     ],
     totalPrice: 54,
-    orderStatus: 'ready',
+    orderStatus: 'ordered',
     createdAt: new Date().toString(),
   },
   {
@@ -98,7 +98,7 @@ export const orders: Order[] = [
       },
     ],
     totalPrice: 81,
-    orderStatus: 'preparing',
+    orderStatus: 'ordered',
     createdAt: new Date().toString(),
   },
 ];
