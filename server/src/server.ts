@@ -14,6 +14,11 @@ import menuRoutes from './routes/menuRoutes';
 import orderRouter from './routes/order';
 
 const app = express();
+app.use(
+  cors({
+    origin: 'http://localhost:1234',
+  })
+);
 dotenv.config({ path: './config/.env' });
 
 const runServer = async () => {
@@ -22,7 +27,6 @@ const runServer = async () => {
 
     app.use(json());
     app.use(urlencoded({ extended: true }));
-    app.use(cors());
     app.use(logger('dev'));
 
     app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

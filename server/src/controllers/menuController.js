@@ -4,6 +4,7 @@ import MenuItem from '../models/MenuItem';
 // @desc    Create a menu
 // @route   POST /api/menu
 // @access  Private/admin
+
 export const createdMenu = asyncHandler(async (req, res) => {
   let menu = new MenuItem({
     name: req.body.name,
@@ -67,7 +68,7 @@ export const deleteMenu = asyncHandler(async (req, res) => {
 //@access public
 
 export const getAllMenu = asyncHandler(async (req, res) => {
-  const menus = await MenuItem.find();
+  const menus = await MenuItem.find().populate('category');
   if (!menus) {
     res.status(404);
     throw new Error('Menu Not Found');
@@ -75,12 +76,12 @@ export const getAllMenu = asyncHandler(async (req, res) => {
   res.json(menus);
 });
 
-//@desc   get all menu
+//@desc   get one menu
 //@route  GET /api/menu:id
-//@access public
+//@access public populate('category')
 
 export const getOneMenu = asyncHandler(async (req, res) => {
-  const menus = await MenuItem.findById(req.params.id);
+  const menus = await MenuItem.findById(req.params.id).populate('category');
   if (!menus) {
     res.status(404);
     throw new Error('Menu Not Found');
