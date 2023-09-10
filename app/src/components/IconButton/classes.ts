@@ -32,6 +32,7 @@ const classes: IconButtonClasses = {
     dark: 'btn-dark',
     link: 'btn-link',
     accent: 'btn-accent',
+    ghost: 'btn-ghost',
   },
   size: {
     xs: 'btn-xs',
