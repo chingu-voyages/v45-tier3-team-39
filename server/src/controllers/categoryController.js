@@ -1,4 +1,4 @@
-import asyncHandler  from 'express-async-handler';
+import asyncHandler from 'express-async-handler';
 import Category from '../models/Category';
 
 // @desc    Create a category
@@ -35,33 +35,31 @@ const updateCategory = asyncHandler(async (req, res) => {
   res.json(category);
 });
 
+//@desc   get all category
+//@route  GET /api/categories
+//@access public
 
-  //@desc   get all category
-  //@route  GET /api/categories
-  //@access public
-  
-  const getAllCategory = asyncHandler(async (req, res) => {
-    const category = await Category.find();
-    if (!category) {
-      res.status(404);
-      throw new Error("category Not Found");
-    }
-    res.json(category);
-  });
+const getAllCategory = asyncHandler(async (req, res) => {
+  const category = await Category.find();
+  if (!category) {
+    res.status(404);
+    throw new Error('category Not Found');
+  }
+  res.json(category);
+});
 
-  //@desc   get one category
-  //@route  GET /api/categories:id
-  //@access public
-  
-  const getOneCategory = asyncHandler(async (req, res) => {
-    const category = await Category.findById(req.params.id);
-    if (!category) {
-      res.status(404);
-      throw new Error("category Not Found");
-    }
-    res.json(category);
-  });
+//@desc   get one category
+//@route  GET /api/categories:id
+//@access public
 
+const getOneCategory = asyncHandler(async (req, res) => {
+  const category = await Category.findById(req.params.id);
+  if (!category) {
+    res.status(404);
+    throw new Error('category Not Found');
+  }
+  res.json(category);
+});
 
 // @desc    DELETE a Category
 // @route   DELETE api/category/:id
@@ -79,4 +77,10 @@ const deleteCategory = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'The category has been deleted' });
 });
 
-export { createdCategory, deleteCategory, updateCategory, getAllCategory, getOneCategory };
+export {
+  createdCategory,
+  deleteCategory,
+  updateCategory,
+  getAllCategory,
+  getOneCategory,
+};

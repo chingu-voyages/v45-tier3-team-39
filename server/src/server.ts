@@ -34,7 +34,7 @@ const runServer = async () => {
     app.use('/api/restaurant', restaurantRouter);
     app.use('/api/user', userRoutes);
     app.use('/api/categories', categoryRoutes);
-    app.use('/api/menu-items', menuRoutes)
+    app.use('/api/menu-items', menuRoutes);
     app.use('/api/order', orderRouter);
 
     app.get('/', (_, res) => {

@@ -21,7 +21,8 @@ type IconButtonColor =
   | 'light'
   | 'dark'
   | 'link'
-  | 'accent';
+  | 'accent'
+  | 'ghost';
 
 export type {
   IconButtonProps,
