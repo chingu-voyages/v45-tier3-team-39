@@ -8,12 +8,14 @@ import {
 } from 'src/utils';
 import { BasketItem, basketState } from 'src/atoms';
 import { Button } from 'src/components/Button/Button';
+import { Badge } from '../Badge/Badge';
+import { Category } from '@ordr/types';
 
 interface ModalProps {
   item_id: string;
   img_url: string;
   name: string;
-  category: string;
+  category: Category;
   description: string;
   price: number;
   onClose: () => void;
@@ -92,9 +94,12 @@ export const CardModal = ({
         </figure>
         <div className="flex items-center">
           <h2 className="text-2xl font-bold pr-2">{name}</h2>
-          <div className="badge badge-accent badge-outline badge-sm">
-            {category}
-          </div>
+          <Badge
+            label={category.name}
+            variant="outline"
+            color="accent"
+            size="sm"
+          />
         </div>
         <p className="py-4">{description}</p>
         <div className="flex justify-between items-center pb-4">

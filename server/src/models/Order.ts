@@ -1,21 +1,5 @@
-import { Schema, model, Document, Types } from 'mongoose';
-
-interface MenuItem {
-  menuItem: Types.ObjectId;
-  name: string;
-  category: string;
-  quantity: number;
-  price: number;
-  subtotal: number;
-}
-
-interface Order extends Document {
-  table: number;
-  items: MenuItem[];
-  totalPrice: number;
-  orderStatus: string;
-  createdAt: Date;
-}
+import { Schema, model } from 'mongoose';
+import { Order } from '@ordr/types';
 
 const orderSchema = new Schema<Order>({
   table: {

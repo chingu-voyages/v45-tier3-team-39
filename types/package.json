@@ -1,0 +1,15 @@
+{
+  "name": "@ordr/types",
+  "version": "0.0.1",
+  "main": "./dist",
+  "license": "MIT",
+  "scripts": {
+    "build:types": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"Error: no start specified\"",
+    "lint": "echo \"Error: no lint specified\"",
+    "lint:fix": "echo \"Error: no lint:fix specified\"",
+    "tsc:check": "echo \"Error: no tsc specified\"",
+    "format": "echo \"Error: no format specified\""
+  }
+}

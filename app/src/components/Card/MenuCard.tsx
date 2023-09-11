@@ -1,19 +1,20 @@
+import { Category } from '@ordr/types';
 import React from 'react';
 import { Badge } from 'src/components/Badge/Badge';
 import { Card } from 'src/components/Card/Card';
 
 interface MenuCardProps {
   item_id: string;
-  img_url: string;
+  image_url: string;
   name: string;
-  category: string;
+  category: Category;
   price: number;
   onAdd: () => void;
 }
 
 const MenuCard = ({
   name,
-  img_url,
+  image_url,
   category,
   price,
   onAdd,
@@ -22,11 +23,11 @@ const MenuCard = ({
     <div className="cursor-pointer" onClick={onAdd}>
       <Card
         title={name}
-        Image={<img src={img_url} alt={name} />}
+        Image={<img src={image_url} alt={name} />}
         description={
           <div className="flex justify-between">
             <Badge
-              label={category}
+              label={category.name}
               variant="outline"
               color="accent"
               size="sm"

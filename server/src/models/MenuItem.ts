@@ -1,21 +1,13 @@
-import { Document, Schema, model, Types } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { MenuItem } from '@ordr/types';
 
-interface IMenuItem extends Document {
-  name: string;
-  category: Types.ObjectId;
-  description: string;
-  price: number;
-  image_url: string;
-  createdAt: Date;
-}
-
-const menuItemSchema = new Schema<IMenuItem>({
+const menuItemSchema = new Schema<MenuItem>({
   name: {
     type: String,
     required: true,
   },
-  category: {
-    type: Schema.Types.ObjectId,
+  categoryId: {
+    type: String,
     required: true,
     ref: 'Category',
   },
@@ -37,5 +29,6 @@ const menuItemSchema = new Schema<IMenuItem>({
   },
 });
 
-const MenuItem = model<IMenuItem>('MenuItem', menuItemSchema);
+const MenuItem = model('MenuItem', menuItemSchema);
+
 export default MenuItem;

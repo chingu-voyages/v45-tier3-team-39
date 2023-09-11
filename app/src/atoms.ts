@@ -1,9 +1,10 @@
+import { Category } from '@ordr/types';
 import { atom } from 'recoil';
 
 export type BasketItem = {
   id: string;
   name: string;
-  category: string;
+  category: Category;
   description: string;
   price: number;
   quantity: number;

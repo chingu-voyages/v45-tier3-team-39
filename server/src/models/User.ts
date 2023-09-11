@@ -1,15 +1,8 @@
-import { Document, Schema, model } from 'mongoose';
+import { User } from '@ordr/types';
+import { Schema, model } from 'mongoose';
 const bcrypt = require('bcryptjs');
 
-interface IUser extends Document {
-  username: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-  createdAt: Date;
-}
-
-const userSchema = new Schema<IUser>({
+const userSchema = new Schema<User>({
   username: {
     type: String,
     required: [true, 'Please provide username'],
@@ -47,6 +40,6 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-const User = model<IUser>('User', userSchema);
+const User = model('User', userSchema);
 
 export default User;

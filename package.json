@@ -28,7 +28,8 @@
   "homepage": "https://github.com/chingu-voyages/v45-tier3-team-39#readme",
   "workspaces": [
     "app",
-    "server"
+    "server",
+    "types"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.3.0",
