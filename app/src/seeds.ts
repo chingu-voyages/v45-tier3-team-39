@@ -1,12 +1,3 @@
-export type MenuItem = {
-  item_id: string;
-  name: string;
-  category: string;
-  description: string;
-  price: number;
-  img_url: string;
-};
-
 type OrderItem = {
   name: string;
   category: string;
@@ -102,6 +93,15 @@ export const orders: Order[] = [
     createdAt: new Date().toString(),
   },
 ];
+
+export type MenuItem = {
+  item_id: string;
+  name: string;
+  category: string;
+  description: string;
+  price: number;
+  img_url: string;
+};
 
 export const items: MenuItem[] = [
   {
