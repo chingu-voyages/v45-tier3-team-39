@@ -4,6 +4,7 @@ export type TableProps = {
 };
 
 export type TableRowProps = {
+  rowClass?: string;
   data: {
     value: string | number | React.ReactNode | JSX.Element;
     size?: string;
