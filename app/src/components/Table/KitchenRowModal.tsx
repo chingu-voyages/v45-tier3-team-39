@@ -1,8 +1,10 @@
 import React from 'react';
-import { KitchenModalRow } from './KitchenModalRow';
 import { Button } from 'src/components/Button/Button';
 import { useRecoilState } from 'recoil';
 import { ordersState } from 'src/atoms';
+import { Stat } from '../Stat/Stat';
+import { Table } from './Table';
+import { TableRow } from './TableRow';
 
 type OrderItem = {
   name: string;
@@ -41,51 +43,37 @@ export const KitchenRowModal = ({
   return (
     <dialog id="ordr-modal" className="modal" open>
       <div className="modal-box">
-        <button
-          className="btn btn-circle btn-sm absolute right-2 top-2 focus:outline-none"
-          onClick={onClose}
-        >
-          ✕
-        </button>
+        <div className="absolute right-2 top-2">
+          <Button
+            color="light"
+            title="x"
+            size="sm"
+            variant="circle"
+            onClick={onClose}
+          />
+        </div>
         <div className="pb-4 flex gap-4 justify-center">
-          <div className="stats shadow">
-            <div className="stat text-center">
-              <div className="stat-title">Table</div>
-              <div className="stat-value">{table}</div>
-            </div>
-          </div>
-          <div className="stats shadow">
-            <div className="stat text-center">
-              <div className="stat-title">Order</div>
-              <div className="stat-value">{order_id}</div>
-            </div>
-          </div>
+          <Stat title="Table" value={table} />
+          <Stat title="Order" value={order_id} />
         </div>
         <div>
           <div className="overflow-x-auto">
-            <table className="table table-zebra table-pin-rows table-pin-cols">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>item</th>
-                  <th>category</th>
-                  <th>quantity</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item) => {
-                  return (
-                    <KitchenModalRow
-                      key={item.name}
-                      name={item.name}
-                      category={item.category}
-                      quantity={item.quantity}
-                    />
-                  );
-                })}
-              </tbody>
-            </table>
+            <Table headers={['Image', 'Item', 'Category', 'Quantity']}>
+              {items.map((item) => {
+                return (
+                  <TableRow
+                    key={item.name}
+                    rowClass="select-none"
+                    data={[
+                      { value: '' },
+                      { value: item.name },
+                      { value: item.category },
+                      { value: item.quantity },
+                    ]}
+                  />
+                );
+              })}
+            </Table>
           </div>
         </div>
         <br />
