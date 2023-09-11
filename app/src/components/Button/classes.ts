@@ -36,6 +36,8 @@ const classes: ButtonClasses = {
     outline: 'btn-outline',
     ghost: 'btn-ghost',
     solid: 'btn-solid',
+    circle: 'btn-circle',
+    square: 'btn-square',
   },
 };
 

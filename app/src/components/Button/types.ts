@@ -6,7 +6,7 @@ type ButtonProps = {
   onClick: () => void;
 };
 
-type ButtonVariant = 'outline' | 'ghost' | 'solid';
+type ButtonVariant = 'outline' | 'ghost' | 'solid' | 'circle' | 'square';
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'wide';
 type ButtonColor =
   | 'primary'
