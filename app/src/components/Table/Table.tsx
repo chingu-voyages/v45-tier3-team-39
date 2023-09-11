@@ -12,7 +12,7 @@ export const Table = ({ children, headers }: TableProps) => {
             ))}
           </tr>
         </thead>
-        {children}
+        <tbody>{children}</tbody>
       </table>
     </div>
   );
