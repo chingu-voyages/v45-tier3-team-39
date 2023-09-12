@@ -4,6 +4,8 @@ export type TextareaProps = {
   size?: TextareaSize;
   width?: TextareaWidth;
   color?: TextareaColor;
+  name?: string;
+  value?: string;
   placeholder?: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };

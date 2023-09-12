@@ -17,6 +17,8 @@ export const InputWithLabel: Story = {
     color: 'right',
     type: 'text',
     placeholder: 'Enter Username',
+    name: 'username',
+    value: null,
     onChange: () => {},
   },
 };
@@ -27,6 +29,8 @@ export const InputWithLabelPrimary: Story = {
     color: 'primary',
     type: 'text',
     placeholder: 'Enter Username',
+    name: 'username',
+    value: null,
     onChange: () => {},
   },
 };
@@ -37,6 +41,8 @@ export const InputWithLabelSecondary: Story = {
     color: 'secondary',
     type: 'text',
     placeholder: 'Enter Username',
+    name: 'username',
+    value: null,
     onChange: () => {},
   },
 };
@@ -48,6 +54,8 @@ export const InputWithLabelAccent: Story = {
     color: 'accent',
     type: 'text',
     placeholder: 'Enter Username',
+    name: 'username',
+    value: null,
     onChange: () => {},
   },
 };
@@ -59,6 +67,8 @@ export const InputWithNoLabel: Story = {
     color: 'right',
     type: 'text',
     placeholder: 'Enter Username',
+    name: 'username',
+    value: 'username',
     onChange: () => {},
   },
 };
@@ -70,6 +80,8 @@ export const InputNumberWithNoLabel: Story = {
     color: 'right',
     type: 'number',
     placeholder: '£0',
+    name: 'username',
+    value: 'username',
     onChange: () => {},
   },
 };
@@ -80,6 +92,8 @@ export const InputWidthFull: Story = {
     color: 'right',
     type: 'text',
     placeholder: 'Enter Username',
+    name: 'username',
+    value: 'username',
     onChange: () => {},
   },
 };

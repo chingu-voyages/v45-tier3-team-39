@@ -7,7 +7,9 @@ export const FileInput = ({
   label = 'Image',
   width = 'w-full',
   color = 'accent',
-  ...props
+  name,
+  value,
+  onChange,
 }: types.FileInputProps) => {
   return (
     <div>
@@ -16,8 +18,10 @@ export const FileInput = ({
       </label>
       <input
         type="file"
+        name={name}
+        value={value}
         className={`file-input file-input-bordered focus:outline-none ${width} ${classes.color[color]}`}
-        {...props}
+        onChange={onChange}
       />
     </div>
   );
