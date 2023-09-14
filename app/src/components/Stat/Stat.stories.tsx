@@ -1,8 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-//import { Button } from '../Button/Button';
+import { Button } from '../Button/Button';
 import { Stat } from './Stat';
-//import { StatsProps } from './types';
 
 const meta: Meta = {
   title: 'Stat',
@@ -98,7 +97,18 @@ export const StatsStyling: Story = {
         descriptionSize: 'md',
         descriptionColor: 'secondary',
       },
-      { title: 'Order', value: 'ej58' },
+      {
+        title: 'Order',
+        value: 'ej58',
+        actions: (
+          <Button
+            title="help"
+            color="info"
+            size="sm"
+            onClick={() => console.log('you clicked me')}
+          />
+        ),
+      },
     ],
   },
 };
