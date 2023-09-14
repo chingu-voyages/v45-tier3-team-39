@@ -82,7 +82,7 @@ export const orders: Order[] = [
       },
       {
         name: 'Oatty',
-        category: 'alternative miks',
+        category: 'alternative milks',
         quantity: 2,
         price: 3,
         subtotal: 6,
@@ -182,7 +182,7 @@ export const orders: Order[] = [
       },
       {
         name: 'Oatty',
-        category: 'alternative miks',
+        category: 'alternative milks',
         quantity: 2,
         price: 3,
         subtotal: 6,
@@ -212,7 +212,7 @@ export const orders: Order[] = [
       },
       {
         name: 'Oatty',
-        category: 'alternative miks',
+        category: 'alternative milks',
         quantity: 2,
         price: 3,
         subtotal: 6,
@@ -242,7 +242,7 @@ export const orders: Order[] = [
       },
       {
         name: 'Oatty',
-        category: 'alternative miks',
+        category: 'alternative milks',
         quantity: 2,
         price: 3,
         subtotal: 6,
@@ -272,7 +272,7 @@ export const orders: Order[] = [
       },
       {
         name: 'Oatty',
-        category: 'alternative miks',
+        category: 'alternative milks',
         quantity: 2,
         price: 3,
         subtotal: 6,

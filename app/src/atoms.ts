@@ -14,7 +14,7 @@ export const basketState = atom<BasketItem[]>({
   default: [],
 });
 
-type OrderItem = {
+export type OrderItem = {
   name: string;
   category: string;
   quantity: number;

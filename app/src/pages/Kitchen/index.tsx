@@ -1,16 +1,16 @@
 import React from 'react';
 import { Navbar } from 'src/components/Navigation/Navbar/Navbar';
 import { Kitchen } from 'src/components/Icons/Kitchen';
-import { KitchenRowModal } from 'src/components/Table/KitchenRowModal';
+import { KitchenRowModal } from 'src/components/Modals/KitchenRowModal';
 import { Table } from 'src/components/Table';
 import { TableRow } from 'src/components/Table';
-import { ordersState, Order } from 'src/atoms';
+import { ordersState, Order, OrderItem } from 'src/atoms';
 import { orders } from 'src/seeds';
 import { useRecoilState } from 'recoil';
 import { useState, useEffect } from 'react';
 import { DeleteIcon } from 'src/components/Icons/DeleteIcon';
-import { findNumberOfPropertyValuesInArrayOfObjects } from 'src/utils';
 import classes from 'src/components/Badge/classes';
+import { Badge } from 'src/components/Badge/Badge';
 
 export const KitchenPage = (): JSX.Element => {
   const [restaurantOrders, setRestaurantOrders] = useRecoilState(ordersState);
@@ -30,12 +30,37 @@ export const KitchenPage = (): JSX.Element => {
     ready: `badge ${classes.size['lg']} ${classes.color['warning']} px-10`,
   };
 
-  const tableRows = restaurantOrders.map((order) => {
-    const categoriesInOrder = findNumberOfPropertyValuesInArrayOfObjects(
-      order.items,
-      'category'
-    );
+  const copyOfRestaurantOrders = [...restaurantOrders];
+  const orderByStatus = copyOfRestaurantOrders.sort((orderA, orderB) =>
+    orderA.orderStatus > orderB.orderStatus ? 1 : -1
+  );
 
+  function countValuesOfProp(
+    items: OrderItem[],
+    cat: keyof OrderItem
+  ): React.ReactNode {
+    const refObj = Object.entries(
+      items.reduce(
+        (acc, curr) => {
+          acc[curr[cat]] = (acc[curr[cat]] || 0) + curr['quantity'];
+          return acc;
+        },
+        {} as Record<string, number>
+      )
+    );
+    return refObj.map((catArr, ind) => {
+      return (
+        <Badge
+          key={ind}
+          label={`${catArr[1]} x ${catArr[0]}`}
+          color={ind % 2 > 0 ? 'primary' : 'secondary'}
+        />
+      );
+    });
+  }
+
+  const tableRows = orderByStatus.map((order) => {
+    const categoriesInOrder = countValuesOfProp(order.items, 'category');
     return (
       <TableRow
         key={order._id}
