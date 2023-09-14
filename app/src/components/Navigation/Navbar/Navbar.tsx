@@ -6,7 +6,7 @@ import { Button } from '../../Button/Button';
 export const Navbar = ({
   icon,
   title = 'title',
-  navButton = 'MENU',
+  navButton,
   onClickLogout,
   onClick,
 }: types.NavbarProps) => {
@@ -24,7 +24,9 @@ export const Navbar = ({
           title="Log out"
           variant="outline"
         />
-        <Button color="light" onClick={onClick} title={navButton} />
+        {navButton && (
+          <Button color="light" onClick={onClick} title={navButton} />
+        )}
       </div>
     </div>
   );

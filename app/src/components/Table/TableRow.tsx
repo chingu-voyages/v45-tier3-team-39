@@ -1,9 +1,9 @@
 import React from 'react';
 import { TableRowProps } from './types';
 
-export const TableRow = ({ data }: TableRowProps) => {
+export const TableRow = ({ rowClass, data }: TableRowProps) => {
   return (
-    <tr>
+    <tr className={rowClass}>
       {data.map(({ value }, i) => (
         <td key={i}>{value}</td>
       ))}
