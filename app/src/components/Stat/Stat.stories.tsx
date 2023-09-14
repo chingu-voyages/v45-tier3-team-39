@@ -77,7 +77,7 @@ export const StatsStyling: Story = {
         ),
         title: 'Restaurant',
         value: 'Chingu',
-        description: '...one of the mosts popular in London!',
+        description: '...one of the most popular in London!',
         titleColor: 'secondary',
         titleSize: 'lg',
         descriptionColor: 'primary',
