@@ -2,9 +2,9 @@ import React from 'react';
 import { Button } from 'src/components/Button/Button';
 import { useRecoilState } from 'recoil';
 import { ordersState } from 'src/atoms';
-import { Stat } from '../Stat/Stat';
-import { Table } from './Table';
-import { TableRow } from './TableRow';
+import { Stat } from 'src/components/Stat/Stat';
+import { Table } from 'src/components/Table/Table';
+import { TableRow } from 'src/components/Table/TableRow';
 
 type OrderItem = {
   name: string;
@@ -53,8 +53,14 @@ export const KitchenRowModal = ({
           />
         </div>
         <div className="pb-4 flex gap-4 justify-center">
-          <Stat title="Table" value={table} />
-          <Stat title="Order" value={order_id} />
+          <Stat
+            background="secondary"
+            align="responsive"
+            stats={[
+              { title: 'Table', value: table, justify: 'center' },
+              { title: 'Order', value: order_id },
+            ]}
+          />
         </div>
         <div>
           <div className="overflow-x-auto">
@@ -83,14 +89,20 @@ export const KitchenRowModal = ({
             size="sm"
             color="info"
             title="Preparing"
-            onClick={() => handleOrderStatus('preparing')}
+            onClick={() => {
+              handleOrderStatus('preparing');
+              onClose();
+            }}
           />
           <Button
             variant="outline"
             size="sm"
             color="accent"
             title="Ready"
-            onClick={() => handleOrderStatus('ready')}
+            onClick={() => {
+              handleOrderStatus('ready');
+              onClose();
+            }}
           />
         </div>
       </div>

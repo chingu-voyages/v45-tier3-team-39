@@ -5,8 +5,8 @@ type StatContClasses = {
     none: '';
   };
   align: {
-    vertical: 'stats vertical';
-    horizontal: 'stats horizontal';
+    vertical: 'stats-vertical';
+    horizontal: 'stats-horizontal';
     responsive: 'lg:stats-horizontal';
   };
   justify: {
@@ -52,8 +52,8 @@ const classes: StatContClasses = {
     none: '',
   },
   align: {
-    vertical: 'stats vertical',
-    horizontal: 'stats horizontal',
+    vertical: 'stats-vertical',
+    horizontal: 'stats-horizontal',
     responsive: 'lg:stats-horizontal',
   },
   justify: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatsProps } from './types';
-import classes from 'src/components/Stat/classes';
+import classes from './classes';
 
 export const Stat = ({
   background = 'none',
