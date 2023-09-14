@@ -7,7 +7,7 @@ type StatContClasses = {
   align: {
     vertical: 'stats-vertical';
     horizontal: 'stats-horizontal';
-    responsive: 'lg:stats-horizontal';
+    responsive: 'stats-vertical lg:stats-horizontal';
   };
   justify: {
     center: 'place-items-center';
@@ -54,7 +54,7 @@ const classes: StatContClasses = {
   align: {
     vertical: 'stats-vertical',
     horizontal: 'stats-horizontal',
-    responsive: 'lg:stats-horizontal',
+    responsive: 'stats-vertical lg:stats-horizontal',
   },
   justify: {
     center: 'place-items-center',
