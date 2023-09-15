@@ -38,47 +38,49 @@ export const AdminMenuPage = () => {
           title="Categories"
         />
       </div>
-      <div className="table table-zebra table-sm">
-        {categories.map((item, index) => (
-          <TableRow
-            key={index}
-            data={[
-              { value: item.name },
-              {
-                value: (
-                  <Button
-                    title="SELECT"
-                    size="sm"
-                    color="dark"
-                    variant="outline"
-                    onClick={() => {}}
-                  />
-                ),
-              },
-              {
-                value: (
-                  <IconButton
-                    Icon={<EditIcon />}
-                    color="ghost"
-                    onClick={() => {}}
-                    variant="solid"
-                  />
-                ),
-              },
-              {
-                value: (
-                  <IconButton
-                    Icon={<BinIcon />}
-                    color="ghost"
-                    onClick={() => {}}
-                    variant="solid"
-                  />
-                ),
-              },
-            ]}
-          />
-        ))}
-      </div>
+      <table className="table table-zebra table-sm">
+        <tbody>
+          {categories.map((item, index) => (
+            <TableRow
+              key={index}
+              data={[
+                { value: item.name },
+                {
+                  value: (
+                    <Button
+                      title="SELECT"
+                      size="sm"
+                      color="dark"
+                      variant="outline"
+                      onClick={() => {}}
+                    />
+                  ),
+                },
+                {
+                  value: (
+                    <IconButton
+                      Icon={<EditIcon />}
+                      color="ghost"
+                      onClick={() => {}}
+                      variant="solid"
+                    />
+                  ),
+                },
+                {
+                  value: (
+                    <IconButton
+                      Icon={<BinIcon />}
+                      color="ghost"
+                      onClick={() => {}}
+                      variant="solid"
+                    />
+                  ),
+                },
+              ]}
+            />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
