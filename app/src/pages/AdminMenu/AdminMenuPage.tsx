@@ -1,15 +1,15 @@
-// AdminMenuPage.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from '../../components/Navigation/Navbar/Navbar';
 import { MenuIcon } from '../../components/Icons/MenuIcon';
 import { NavbarMiddle } from '../../components/Navigation/NavbarMiddle/NavbarMiddle';
-import { IconButton } from '../../components/IconButton/IconButton';
-import { BinIcon } from '../../components/Icons/BinIcon';
-import { EditIcon } from '../../components/Icons/EditIcon';
-import { Button } from '../../components/Button/Button';
-import { TableRow } from '../../components/Table';
+import { CategoryTable } from './components/CategoryTable';
+import { MenuItemsTable } from './components/MenuItemsTable';
 
 export const AdminMenuPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState<{
+    name: string;
+  } | null>(null);
+
   const categories = [
     {
       name: 'Artisan Pizza',
@@ -21,6 +21,23 @@ export const AdminMenuPage = () => {
       name: 'Cheese Pizza',
     },
   ];
+
+  const menuItems = [
+    {
+      name: 'Pepperoni',
+      image:
+        'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA',
+    },
+    {
+      name: 'Margherita',
+      image:
+        'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA',
+    },
+  ];
+
+  const handleCategorySelect = (category: any) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <div className="max-w-2xl mx-auto p-4">
@@ -38,49 +55,24 @@ export const AdminMenuPage = () => {
           title="Categories"
         />
       </div>
-      <table className="table table-zebra table-sm">
-        <tbody>
-          {categories.map((item, index) => (
-            <TableRow
-              key={index}
-              data={[
-                { value: item.name },
-                {
-                  value: (
-                    <Button
-                      title="SELECT"
-                      size="sm"
-                      color="dark"
-                      variant="outline"
-                      onClick={() => {}}
-                    />
-                  ),
-                },
-                {
-                  value: (
-                    <IconButton
-                      Icon={<EditIcon />}
-                      color="ghost"
-                      onClick={() => {}}
-                      variant="solid"
-                    />
-                  ),
-                },
-                {
-                  value: (
-                    <IconButton
-                      Icon={<BinIcon />}
-                      color="ghost"
-                      onClick={() => {}}
-                      variant="solid"
-                    />
-                  ),
-                },
-              ]}
+      <div className="mb-8">
+        <CategoryTable
+          categories={categories}
+          onCategorySelect={handleCategorySelect}
+        />
+      </div>
+      {selectedCategory && (
+        <div>
+          <div className="mb-2">
+            <NavbarMiddle
+              color="accent"
+              onClick={() => {}}
+              title={selectedCategory.name}
             />
-          ))}
-        </tbody>
-      </table>
+          </div>
+          <MenuItemsTable menuItems={menuItems} />
+        </div>
+      )}
     </div>
   );
 };
