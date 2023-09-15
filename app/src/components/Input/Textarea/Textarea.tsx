@@ -9,6 +9,8 @@ export const Textarea = ({
   width = 'w-full',
   color = 'accent',
   placeholder = 'Description',
+  name,
+  value,
   onChange,
 }: t.TextareaProps) => {
   return (
@@ -17,6 +19,8 @@ export const Textarea = ({
         <span className="text-base label-text">{label}</span>
       </label>
       <textarea
+        name={name}
+        value={value}
         className={`textarea textarea-bordered focus:outline-none ${width} ${classes.size[size]} ${classes.color[color]}`}
         placeholder={placeholder}
         onChange={onChange}

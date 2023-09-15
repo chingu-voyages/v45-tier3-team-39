@@ -5,7 +5,8 @@ export type SelectProps = {
   color?: SelectColor;
   placeholder?: string;
   options?: string[];
-  selectedOption?: string;
+  name?: string;
+  value?: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 export type SelectWidth = 'w-full' | 'w-min' | 'w-max' | 'w-fit';

@@ -15,6 +15,9 @@ export const FileInputWithLabel: Story = {
     label: 'Image',
     width: 'w-min',
     color: 'right',
+    name: 'image',
+    value: null,
+    onChange: () => {},
   },
 };
 export const FileInputWithLabelPrimary: Story = {
@@ -22,6 +25,9 @@ export const FileInputWithLabelPrimary: Story = {
     label: 'Image',
     width: 'w-min',
     color: 'primary',
+    name: 'image',
+    value: null,
+    onChange: () => {},
   },
 };
 export const FileInputWithLabelSecondary: Story = {
@@ -29,6 +35,9 @@ export const FileInputWithLabelSecondary: Story = {
     label: 'Image',
     width: 'w-min',
     color: 'secondary',
+    name: 'image',
+    value: null,
+    onChange: () => {},
   },
 };
 
@@ -37,6 +46,9 @@ export const FileInputWithLabelAccent: Story = {
     label: 'Image',
     width: 'w-min',
     color: 'accent',
+    name: 'image',
+    value: null,
+    onChange: () => {},
   },
 };
 
@@ -45,5 +57,8 @@ export const FileInputWidthFull: Story = {
     label: 'Image',
     width: 'w-full',
     color: 'right',
+    name: 'Image',
+    value: null,
+    onChange: () => {},
   },
 };
