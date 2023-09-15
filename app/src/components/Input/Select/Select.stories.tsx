@@ -16,7 +16,8 @@ export const SelectWithLabel: Story = {
     width: 'w-min',
     color: '',
     options: ['A', 'B', 'C'],
-    selectedOption: 'A',
+    name: 'Category',
+    value: 'A',
     onChange: () => {},
   },
 };
@@ -26,7 +27,8 @@ export const SelectWithLabelPrimary: Story = {
     width: 'w-min',
     color: 'primary',
     options: ['A', 'B', 'C'],
-    selectedOption: 'A',
+    name: 'Category',
+    value: 'A',
     onChange: () => {},
   },
 };
@@ -36,7 +38,8 @@ export const SelectWithLabelSecondary: Story = {
     width: 'w-min',
     color: 'secondary',
     options: ['A', 'B', 'C'],
-    selectedOption: 'A',
+    name: 'Category',
+    value: 'A',
     onChange: () => {},
   },
 };
@@ -47,7 +50,8 @@ export const SelectWithLabelAccent: Story = {
     width: 'w-min',
     color: 'accent',
     options: ['A', 'B', 'C'],
-    selectedOption: 'A',
+    name: 'Category',
+    value: 'A',
     onChange: () => {},
   },
 };
@@ -58,7 +62,8 @@ export const SelectWidthFull: Story = {
     width: 'w-full',
     color: 'accent',
     options: ['A', 'B', 'C'],
-    selectedOption: 'A',
+    name: 'Category',
+    value: 'A',
     onChange: () => {},
   },
 };

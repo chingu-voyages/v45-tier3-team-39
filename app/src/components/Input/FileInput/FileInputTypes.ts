@@ -3,7 +3,9 @@ export type FileInputProps = {
   label?: string;
   width?: FileInputWidth;
   color?: FileInputColor;
-  placeholder?: string;
+  name?: string;
+  value?: string | number;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 export type FileInputWidth = 'w-full' | 'w-min' | 'w-max' | 'w-fit';
 

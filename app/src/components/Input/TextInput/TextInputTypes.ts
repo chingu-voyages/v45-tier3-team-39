@@ -5,6 +5,8 @@ export type TextInputProps = {
   color?: TextInputColor;
   type?: TextInputType;
   placeholder?: string;
+  name?: string;
+  value?: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 export type TextInputWidth = 'w-full' | 'w-min' | 'w-max' | 'w-fit';

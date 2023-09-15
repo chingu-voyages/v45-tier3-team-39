@@ -8,7 +8,8 @@ export const Select = ({
   width = 'w-full',
   color = 'accent',
   options,
-  selectedOption,
+  name,
+  value,
   onChange,
 }: types.SelectProps) => {
   let optionElements = null;
@@ -26,9 +27,10 @@ export const Select = ({
         <span className="text-base label-text">{label}</span>
       </label>
       <select
-        className={`select select-bordered w-full ${width} ${classes.color[color]}`}
+        className={`select select-bordered w-full focus:outline-none ${width} ${classes.color[color]}`}
         onChange={onChange}
-        value={selectedOption}
+        name={name}
+        value={value}
       >
         {optionElements}
       </select>
