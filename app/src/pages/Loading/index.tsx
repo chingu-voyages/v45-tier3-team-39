@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loading } from 'src/components/Loading/Loading';
+import { Loading } from '~src/components/Loading/Loading';
 
 const LoadingPhrases = [
   'Cooking up some good stuff...',

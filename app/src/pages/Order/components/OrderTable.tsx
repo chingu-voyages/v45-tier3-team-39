@@ -1,8 +1,8 @@
 import React from 'react';
-import { IconButton } from 'src/components/IconButton/IconButton';
-import { BinIcon } from 'src/components/Icons/BinIcon';
-import { Table, TableRow } from 'src/components/Table';
-import { BasketItem } from 'src/atoms';
+import { IconButton } from '~src/components/IconButton/IconButton';
+import { BinIcon } from '~src/components/Icons/BinIcon';
+import { Table, TableRow } from '~src/components/Table';
+import { BasketItem } from '~src/atoms';
 
 export const OrderTable = ({
   items,

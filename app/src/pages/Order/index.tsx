@@ -2,7 +2,7 @@ import React from 'react';
 import { NavbarArrow } from '../../components/Navigation/NavbarArrow/NavbarArrow';
 import { OrderTable } from './components/OrderTable';
 import { useRecoilState } from 'recoil';
-import { basketState } from 'src/atoms';
+import { basketState } from '~src/atoms';
 
 export const OrderPage = () => {
   const [basketItems, setBaketItems] = useRecoilState(basketState);
