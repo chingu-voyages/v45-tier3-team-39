@@ -8,8 +8,6 @@ export const OrderPage = () => {
   const [basketItems, setBaketItems] = useRecoilState(basketState);
 
   const handleDeleteItem = (id: string) => {
-    console.log('delete item', id);
-
     const newItems = basketItems.filter((item) => item.id !== id);
     setBaketItems(newItems);
   };
