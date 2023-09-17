@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Category } from '@ordr/types';
+import { Category } from '../../types/dist/Category';
 
 const categorySchema = new Schema<Category>({
   name: {

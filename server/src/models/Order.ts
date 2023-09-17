@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Order } from '@ordr/types';
+import { Order } from '../../types/dist/Order';
 
 const orderSchema = new Schema<Order>({
   table: {

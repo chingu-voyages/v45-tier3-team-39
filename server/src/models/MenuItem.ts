@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { MenuItem } from '@ordr/types';
+import { MenuItem } from '../../types/dist/MenuItem';
 
 const menuItemSchema = new Schema<MenuItem>({
   name: {
