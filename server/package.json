@@ -35,5 +35,8 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "ts-node": "^10.9.1"
+  },
+  "engines": {
+    "node": "^19.0.0"
   }
 }
