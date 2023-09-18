@@ -3,7 +3,6 @@ import * as types from './NavbarArrowTypes';
 import { LeftArrowIcon } from '../../Icons/LeftArrowIcon';
 import { Link } from 'react-router-dom';
 
-//component
 export const NavbarArrow = ({
   link,
   linkName = 'MENU',
