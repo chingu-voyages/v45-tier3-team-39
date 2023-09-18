@@ -1,13 +1,13 @@
 // AdminMenuPage.tsx
 import React from 'react';
-import { Navbar } from '../../components/Navigation/Navbar/Navbar';
-import { MenuIcon } from '../../components/Icons/MenuIcon';
-import { NavbarMiddle } from '../../components/Navigation/NavbarMiddle/NavbarMiddle';
-import { IconButton } from '../../components/IconButton/IconButton';
-import { BinIcon } from '../../components/Icons/BinIcon';
-import { EditIcon } from '../../components/Icons/EditIcon';
-import { Button } from '../../components/Button/Button';
-import { TableRow } from '../../components/Table';
+import { Navbar } from '~src/components/Navigation/Navbar/Navbar';
+import { MenuIcon } from '~src/components/Icons/MenuIcon';
+import { NavbarMiddle } from '~src/components/Navigation/NavbarMiddle/NavbarMiddle';
+import { IconButton } from '~src/components/IconButton/IconButton';
+import { BinIcon } from '~src/components/Icons/BinIcon';
+import { EditIcon } from '~src/components/Icons/EditIcon';
+import { Button } from '~src/components/Button/Button';
+import { TableRow } from '~src/components/Table';
 
 export const AdminMenuPage = () => {
   const categories = [
