@@ -1,4 +1,4 @@
-import { join, dirname } from 'path';
+import path, { join, dirname } from 'path';
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -25,6 +25,16 @@ const config = {
       },
     },
   ],
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '~src': path.resolve(__dirname, '../src/'),
+    };
+    // config.resolve.extensions.push(".ts", ".tsx");clear
+
+    console.log(config);
+    return config;
+  },
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},

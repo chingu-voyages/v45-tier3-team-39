@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { Category } from '@ordr/types';
 import {
   findArrayIndex,
   replaceItemAtIndex,
@@ -8,8 +9,8 @@ import {
 } from '~src/utils';
 import { BasketItem, basketState } from '~src/atoms';
 import { Button } from '~src/components/Button/Button';
-import { Badge } from '../Badge/Badge';
-import { Category } from '@ordr/types';
+import { Badge } from '~src/components/Badge/Badge';
+import { TextInput } from '../Input/TextInput/TextInput';
 
 interface ModalProps {
   item_id: string;
@@ -98,13 +99,12 @@ export const CardModal = ({
         </div>
         <p className="py-4">{description}</p>
         <div className="flex justify-between items-center pb-4">
-          <input
+          <TextInput
             type="number"
-            name="quantity"
-            min={0}
+            label="Quantity"
             value={inputQty}
             onChange={(e) => setInputQty(+e.target.value)}
-            className="input input-bordered max-w-3 focus:outline-none"
+            customClasses="input input-bordered max-w-3 focus:outline-none"
           />
           <p className="text-lg">£{price}</p>
         </div>
