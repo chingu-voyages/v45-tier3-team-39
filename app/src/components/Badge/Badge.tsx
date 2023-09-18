@@ -1,4 +1,5 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge';
 import { BadgeProps } from './types';
 import classes from './classes';
 
@@ -7,10 +8,14 @@ export const Badge = ({
   size = 'md',
   variant = 'solid',
   color = 'primary',
+  customClasses,
 }: BadgeProps) => {
   return (
     <span
-      className={`badge ${classes.color[color]} ${classes.variant[variant]} ${classes.size[size]}`}
+      className={twMerge(
+        `badge ${classes.color[color]} ${classes.variant[variant]} ${classes.size[size]}`,
+        customClasses
+      )}
     >
       {label}
     </span>
