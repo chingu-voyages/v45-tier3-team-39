@@ -16,7 +16,7 @@ import orderRouter from './routes/order';
 const app = express();
 app.use(
   cors({
-    origin: 'https://ordr.onrender.com',
+    origin: 'http://localhost:1234',
   })
 );
 dotenv.config({ path: `${__dirname}/config/.env` });
