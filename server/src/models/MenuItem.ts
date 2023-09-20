@@ -6,7 +6,7 @@ const menuItemSchema = new Schema<MenuItem>({
     type: String,
     required: true,
   },
-  categoryId: {
+  category: {
     type: String,
     required: true,
     ref: 'Category',

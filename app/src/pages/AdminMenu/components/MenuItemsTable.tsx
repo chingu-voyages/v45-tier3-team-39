@@ -7,7 +7,7 @@ import { TableRow } from '../../../components/Table';
 
 type MenuItem = {
   name: string;
-  image: string;
+  image_url: string;
 };
 
 export const MenuItemsTable = ({ menuItems }: { menuItems: MenuItem[] }) => {
@@ -19,7 +19,7 @@ export const MenuItemsTable = ({ menuItems }: { menuItems: MenuItem[] }) => {
             key={index}
             data={[
               {
-                value: <Thumbnail src={item.image} alt={item.name} />,
+                value: <Thumbnail src={item.image_url} alt={item.name} />,
               },
               { value: <div className="font-bold">{item.name}</div> },
               {

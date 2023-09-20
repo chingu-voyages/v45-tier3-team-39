@@ -1,39 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navigation/Navbar/Navbar';
 import { MenuIcon } from '../../components/Icons/MenuIcon';
 import { NavbarMiddle } from '../../components/Navigation/NavbarMiddle/NavbarMiddle';
 import { CategoryTable } from './components/CategoryTable';
 import { MenuItemsTable } from './components/MenuItemsTable';
 
-export const AdminMenuPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState<{
+type Category = {
+  name: string;
+};
+
+type MenuItem = {
+  _id: string;
+  name: string;
+  image_url: string;
+  category: {
+    _id: string;
     name: string;
-  } | null>(null);
+  };
+};
 
-  const categories = [
-    {
-      name: 'Artisan Pizza',
-    },
-    {
-      name: 'Vegan Pizza',
-    },
-    {
-      name: 'Cheese Pizza',
-    },
-  ];
+export const AdminMenuPage = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<Category>();
 
-  const menuItems = [
-    {
-      name: 'Pepperoni',
-      image:
-        'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA',
-    },
-    {
-      name: 'Margherita',
-      image:
-        'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA',
-    },
-  ];
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const response = await fetch('http://localhost:2023/api/categories');
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    }
+
+    async function fetchMenuItems() {
+      try {
+        const response = await fetch('http://localhost:2023/api/menu-items');
+        const data = await response.json();
+        setMenuItems(data);
+      } catch (error) {
+        console.error('Error fetching menu items:', error);
+      }
+    }
+
+    fetchCategories();
+    fetchMenuItems();
+  }, []);
 
   const handleCategorySelect = (category: any) => {
     setSelectedCategory(category);
@@ -70,7 +84,11 @@ export const AdminMenuPage = () => {
               title={selectedCategory.name}
             />
           </div>
-          <MenuItemsTable menuItems={menuItems} />
+          <MenuItemsTable
+            menuItems={menuItems.filter(
+              (item) => item.category.name === selectedCategory.name
+            )}
+          />
         </div>
       )}
     </div>
