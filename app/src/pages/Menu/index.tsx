@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import CatDropdown from 'src/components/Dropdowns/CatDropdown';
-import MenuCard from 'src/components/Card/MenuCard';
-import { CardModal } from 'src/components/Modals/CardModal';
-import { basketState } from 'src/atoms';
+import CatDropdown from '~src/components/Dropdowns/CatDropdown';
+import MenuCard from '~src/components/Card/MenuCard';
+import { CardModal } from '~src/components/Modals/CardModal';
+import { basketState } from '~src/atoms';
 import { MenuItem } from '@ordr/types';
 
 export const MenuPage = (): JSX.Element => {
-  // const [category, SetCategory] = useState<(typeof categories)[number]>('all');
   const [selectedItem, setSelectedItem] = useState<MenuItem>();
   const [menuItems, setMenuItems] = useState<MenuItem[]>(); // [
   const basket = useRecoilValue(basketState);
@@ -41,11 +40,7 @@ export const MenuPage = (): JSX.Element => {
           <span className="indicator-item badge badge-neutral">
             {basket.length > 0 ? basketUnits : 0}
           </span>
-          <Link
-            role="button"
-            className="btn btn-accent"
-            to="https://profy.dev/#faq"
-          >
+          <Link role="button" className="btn btn-accent" to="/order">
             your order
           </Link>
         </div>

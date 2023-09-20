@@ -1,6 +1,7 @@
 import React from 'react';
 import * as types from './NavbarArrowTypes';
 import { LeftArrowIcon } from '../../Icons/LeftArrowIcon';
+import { Link } from 'react-router-dom';
 
 //component
 export const NavbarArrow = ({
@@ -11,10 +12,10 @@ export const NavbarArrow = ({
   return (
     <div className="navbar p-4 h-20">
       <div className="navbar-start">
-        <a href={link} className="flex items-center">
+        <Link to={link} className="flex items-center">
           <LeftArrowIcon />
           {linkName}
-        </a>
+        </Link>
       </div>
 
       <div className="navbar-center">

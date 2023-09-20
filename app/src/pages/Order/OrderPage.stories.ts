@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import OrderPage from './OrderPage';
+import { OrderPage } from '.';
 
 const meta: Meta = {
   title: 'Customer/OrderPageSample',
