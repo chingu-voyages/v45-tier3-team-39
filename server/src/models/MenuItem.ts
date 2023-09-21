@@ -1,16 +1,5 @@
 import { Schema, model } from 'mongoose';
-//MenuItem type in the backend has a objectId as value for category; but when it is received in the fron the category property is populated with the correspondent category object so it differs in type.
-
-type MenuItem = {
-  _id: string;
-  category: Schema.Types.ObjectId;
-  name: string;
-  categoryId: string;
-  description: string;
-  price: number;
-  image_url: string;
-  createdAt: Date;
-};
+import { MenuItem } from '@ordr/types';
 
 const menuItemSchema = new Schema<MenuItem>({
   name: {
@@ -18,7 +7,7 @@ const menuItemSchema = new Schema<MenuItem>({
     required: true,
   },
   category: {
-    type: Schema.Types.ObjectId,
+    type: String,
     required: true,
     ref: 'Category',
   },

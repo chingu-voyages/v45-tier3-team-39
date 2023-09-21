@@ -1,8 +1,6 @@
 import Order from '../models/Order';
 import { Request, Response } from 'express';
 
-//create a new Order
-
 export const createNewOrder = async (req: Request, res: Response) => {
   try {
     const { table, items, status } = req.body;
@@ -12,8 +10,8 @@ export const createNewOrder = async (req: Request, res: Response) => {
     }, 0);
 
     const order = new Order({
-      table: table,
-      items: items,
+      table,
+      items,
       orderStatus: status || 'Not prepared',
       totalPrice: totalPrice,
     });
@@ -38,9 +36,9 @@ export const createNewOrder = async (req: Request, res: Response) => {
 
 export const getAllOrders = async (_req: Request, res: Response) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().populate('items.category', 'name');
 
-    if (!orders || !orders.length) {
+    if (!orders) {
       res.status(404).json({
         success: false,
         message: 'No order found',
@@ -97,7 +95,7 @@ export const updateOrderStatus = async (req: Request, res: Response) => {
       orderId,
       { orderStatus: newStatus },
       { new: true }
-    );
+    ).populate('items.category', 'name');
 
     if (!updatedOrder) {
       res.status(404).json({

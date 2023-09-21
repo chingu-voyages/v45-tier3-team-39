@@ -15,6 +15,7 @@ const orderSchema = new Schema<Order>({
       category: {
         type: String,
         required: true,
+        ref: 'Category',
       },
       quantity: {
         type: Number,
