@@ -3,7 +3,7 @@ require('dotenv').config({
   path: `${__dirname}/../config/.env`,
 });
 
-const CatModel = mongoose.model('categories', {
+const CatModel = mongoose.model('Category', {
   name: {
     type: String,
     required: [true, 'Please provide category name'],
@@ -14,73 +14,45 @@ const CatModel = mongoose.model('categories', {
   },
 });
 
-const OrdersModel = mongoose.model('orders', {
-  table: {
-    type: Number,
-    required: true,
-  },
-  items: [
-    {
-      name: {
-        type: String,
-        required: true,
-      },
-      category: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Category',
-      },
-      quantity: {
-        type: Number,
-        required: true,
-        default: 1,
-      },
-      price: {
-        type: Number,
-        required: true,
-      },
-      subtotal: {
-        type: Number,
-        required: true,
-      },
-    },
-  ],
-  totalPrice: {
-    type: Number,
-    required: true,
-  },
-  orderStatus: {
-    type: String,
-    required: true,
-    default: 'Not started',
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-// const MenuItemModel = mongoose.model('menuitems', {
-//     name: {
-//         type: String,
-//         required: true,
-//     },
-//     category: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         required: true,
-//         ref: 'Category',
-//     },
-//     description: {
-//         type: String,
-//         required: [true, 'Please provide item description'],
-//     },
-//     price: {
+// const OrdersModel = mongoose.model('Order', {
+//     table: {
 //         type: Number,
-//         required: [true, 'Please provide price'],
+//         required: true,
 //     },
-//     image_url: {
+//     items: [
+//         {
+//             name: {
+//                 type: String,
+//                 required: true,
+//             },
+//             category: {
+//                 type: mongoose.Schema.Types.ObjectId,
+//                 required: true,
+//                 ref: 'Category',
+//             },
+//             quantity: {
+//                 type: Number,
+//                 required: true,
+//                 default: 1,
+//             },
+//             price: {
+//                 type: Number,
+//                 required: true,
+//             },
+//             subtotal: {
+//                 type: Number,
+//                 required: true,
+//             },
+//         },
+//     ],
+//     totalPrice: {
+//         type: Number,
+//         required: true,
+//     },
+//     orderStatus: {
 //         type: String,
-//         required: [true, 'Please upload image'],
+//         required: true,
+//         default: 'Not started',
 //     },
 //     createdAt: {
 //         type: Date,
@@ -88,7 +60,35 @@ const OrdersModel = mongoose.model('orders', {
 //     },
 // });
 
-const { orderSeed } = require('./seed');
+const MenuItemModel = mongoose.model('MenuItem', {
+  name: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Category',
+  },
+  description: {
+    type: String,
+    required: [true, 'Please provide item description'],
+  },
+  price: {
+    type: Number,
+    required: [true, 'Please provide price'],
+  },
+  image_url: {
+    type: String,
+    required: [true, 'Please upload image'],
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+const { menuItemSeed } = require('./seed');
 
 if (!process.env.DB_STRING) {
   throw new Error('ATLAS_URI not set');
@@ -111,14 +111,17 @@ mongoose
     const catObjRef = cats.reduce((acc, curr) => {
       return { ...acc, [curr.name]: curr._id };
     }, {});
-    // const itemsWithAddedCatRef = menuItemSeed.map(item => ({ ...item, category: catObjRef[item.category] }));
-    const ordersWithAddedCatRef = orderSeed.map((order) => {
-      const orderWithCatRef = order.items.map((item) => ({
-        ...item,
-        category: catObjRef[item.category],
-      }));
-      return { ...order, items: orderWithCatRef };
-    });
-    await OrdersModel.insertMany(ordersWithAddedCatRef);
+    const itemsWithAddedCatRef = menuItemSeed.map((item) => ({
+      ...item,
+      category: catObjRef[item.category],
+    }));
+    // const ordersWithAddedCatRef = orderSeed.map((order) => {
+    //     const orderWithCatRef = order.items.map((item) => ({
+    //         ...item,
+    //         category: catObjRef[item.category],
+    //     }));
+    //     return { ...order, items: orderWithCatRef };
+    // });
+    await MenuItemModel.insertMany(itemsWithAddedCatRef);
     mongoose.disconnect();
   });

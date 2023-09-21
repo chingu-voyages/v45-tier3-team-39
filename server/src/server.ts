@@ -19,7 +19,7 @@ app.use(
     origin: 'http://localhost:1234',
   })
 );
-dotenv.config({ path: './config/.env' });
+dotenv.config({ path: `${__dirname}/config/.env` });
 
 const runServer = async () => {
   try {
