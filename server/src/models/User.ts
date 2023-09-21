@@ -1,4 +1,4 @@
-import { User } from '@ordr/types';
+import { User } from '../../types/dist/User';
 import { Schema, model } from 'mongoose';
 const bcrypt = require('bcryptjs');
 

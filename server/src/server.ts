@@ -16,7 +16,7 @@ import orderRouter from './routes/orderRoutes';
 const app = express();
 app.use(
   cors({
-    origin: 'http://localhost:1234',
+    origin: '*',
   })
 );
 dotenv.config({ path: `${__dirname}/config/.env` });

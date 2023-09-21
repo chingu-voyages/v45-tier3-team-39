@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Restaurant } from '@ordr/types';
+import { Restaurant } from '../../types/dist/Restaurant';
 
 const restaurantSchema = new Schema<Restaurant>({
   name: {
