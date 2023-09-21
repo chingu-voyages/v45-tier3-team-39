@@ -18,7 +18,7 @@ const menuItemSchema = new Schema<MenuItem>({
     required: true,
   },
   category: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
     ref: 'Category',
   },
