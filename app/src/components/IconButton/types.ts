@@ -6,7 +6,7 @@ type IconButtonProps = {
   size?: IconButtonSize;
   shape?: IconButtonShape;
   variant?: IconButtonVariant;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement> | undefined) => void;
 };
 
 type IconButtonShape = 'circle' | 'square';

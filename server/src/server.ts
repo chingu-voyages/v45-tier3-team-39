@@ -7,11 +7,11 @@ import { swaggerSpec } from '../swagger';
 import { json, urlencoded } from 'express';
 import cors from 'cors';
 import { notFound, errorHandler } from './middleware/errorHandler';
-import restaurantRouter from './routes/restaurant';
+import restaurantRouter from './routes/restaurantRoutes';
 import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
 import menuRoutes from './routes/menuRoutes';
-import orderRouter from './routes/order';
+import orderRouter from './routes/orderRoutes';
 
 const app = express();
 app.use(
@@ -35,7 +35,7 @@ const runServer = async () => {
     app.use('/api/user', userRoutes);
     app.use('/api/categories', categoryRoutes);
     app.use('/api/menu-items', menuRoutes);
-    app.use('/api/order', orderRouter);
+    app.use('/api/orders', orderRouter);
 
     app.get('/', (_, res) => {
       res.send('API is running...');
