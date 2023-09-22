@@ -3,6 +3,7 @@ type BadgeProps = {
   variant?: 'solid' | 'outline';
   color?: BadgeColor;
   size?: BadgeSize;
+  customClasses?: string;
 };
 
 type BadgeVariant = 'solid' | 'outline';

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import CatDropdown from '~src/components/Dropdowns/CatDropdown';
 import MenuCard from '~src/components/Card/MenuCard';
+import { Badge } from '~src/components/Badge/Badge';
 import { CardModal } from '~src/components/Modals/CardModal';
 import { basketState } from '~src/atoms';
 import { MenuItem } from '@ordr/types';
@@ -37,11 +38,12 @@ export const MenuPage = (): JSX.Element => {
           <h1 className="text-xl font-bold">La mia Pizza</h1>
         </div>
         <div className="navbar-end indicator">
-          <span className="indicator-item badge badge-neutral">
-            {basket.length > 0 ? basketUnits : 0}
-          </span>
-          <Link role="button" className="btn btn-accent" to="/order">
-            your order
+          <Badge
+            label={basket.length > 0 ? basketUnits.toString() : '0'}
+            customClasses="indicator-item"
+          />
+          <Link role="button" className="btn" to="/order">
+            Your order
           </Link>
         </div>
       </div>

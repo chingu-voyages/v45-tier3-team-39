@@ -1,6 +1,7 @@
 import React from 'react';
 import * as t from './TextInputTypes';
 import classes from './classes';
+import { twMerge } from 'tailwind-merge';
 
 //component
 export const TextInput = ({
@@ -9,6 +10,9 @@ export const TextInput = ({
   color = 'accent',
   type = 'text',
   placeholder = 'Type here',
+  customClasses,
+  min = 0,
+  max = 100,
   name,
   value,
   onChange,
@@ -20,10 +24,15 @@ export const TextInput = ({
       </label>
       <input
         type={type}
+        min={min}
+        max={max}
         name={name}
         value={value}
         placeholder={placeholder}
-        className={`input input-bordered focus:outline-none ${width} ${classes.color[color]}`}
+        className={twMerge(
+          `input input-bordered focus:outline-none ${width} ${classes.color[color]}`,
+          customClasses
+        )}
         onChange={onChange}
       />
     </div>
