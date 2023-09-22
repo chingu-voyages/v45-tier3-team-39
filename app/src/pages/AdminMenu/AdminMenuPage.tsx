@@ -6,12 +6,14 @@ import { NavbarMiddle } from '~src/components/Navigation/NavbarMiddle/NavbarMidd
 import { CategoryTable } from './components/CategoryTable';
 import { MenuItemsTable } from './components/MenuItemsTable';
 import AddMenuItemModal from './components/AddMenuItemModal';
+import AddCategoryItemModal from './components/AddCategoryItemModal';
 
 export const AdminMenuPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category>();
   const [showAddMenuItemModal, setShowAddMenuItemModal] = useState(false);
+  const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
 
   async function fetchCategories() {
     try {
@@ -84,6 +86,23 @@ export const AdminMenuPage = () => {
     }
   };
 
+  const handleAddCategory = async ({ name }: { name: string }) => {
+    try {
+      await fetch(`http://localhost:2023/api/categories`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+        }),
+      });
+      await fetchCategories();
+    } catch (error) {
+      console.error('Error adding category:', error);
+    }
+  };
+
   return (
     <div className="max-w-2xl mx-auto p-4">
       {showAddMenuItemModal && selectedCategory && (
@@ -91,6 +110,12 @@ export const AdminMenuPage = () => {
           category={selectedCategory}
           onClose={() => setShowAddMenuItemModal(false)}
           onAdd={handleAddItem}
+        />
+      )}
+      {showAddCategoryModal && (
+        <AddCategoryItemModal
+          onAdd={handleAddCategory}
+          onClose={() => setShowAddCategoryModal(false)}
         />
       )}
       <Navbar
@@ -103,7 +128,7 @@ export const AdminMenuPage = () => {
       <div className="mb-2">
         <NavbarMiddle
           color="accent-content"
-          onClick={() => {}}
+          onClick={() => setShowAddCategoryModal(true)}
           title="Categories"
         />
       </div>
