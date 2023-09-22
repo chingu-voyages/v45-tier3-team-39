@@ -4,10 +4,7 @@ import { BinIcon } from '../../../components/Icons/BinIcon';
 import { EditIcon } from '../../../components/Icons/EditIcon';
 import { Button } from '../../../components/Button/Button';
 import { TableRow } from '../../../components/Table';
-
-type Category = {
-  name: string;
-};
+import { Category } from '@ordr/types';
 
 export const CategoryTable = ({
   categories,
