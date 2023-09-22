@@ -1,10 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import logger from 'morgan';
+import { json, urlencoded } from 'express';
 import swaggerUi from 'swagger-ui-express';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 import { connectDB } from './db';
 import { swaggerSpec } from '../swagger';
-import { json, urlencoded } from 'express';
 import cors from 'cors';
 import { notFound, errorHandler } from './middleware/errorHandler';
 import restaurantRouter from './routes/restaurantRoutes';
@@ -20,6 +22,25 @@ app.use(
   })
 );
 dotenv.config({ path: './config/.env' });
+
+const server = createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:1234',
+    methods: ['GET', 'POST'],
+  },
+});
+
+export let socketIO: any;
+
+io.on('connection', (socket) => {
+  socketIO = socket;
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
 
 const runServer = async () => {
   try {
@@ -46,7 +67,7 @@ const runServer = async () => {
 
     const PORT = process.env.PORT || 2023;
 
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
       console.log(
         `Server is running in ${process.env.NODE_ENV} mode & listening on PORT ${PORT}`,
         `http://localhost:${PORT}`
