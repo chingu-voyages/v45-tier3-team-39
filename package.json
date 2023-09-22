@@ -10,13 +10,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start --workspace=app & npm start dev --workspace=server",
+    "server": "npm run start --workspace=server",
     "lint": "npm run lint --workspaces",
     "lint:fix": "npm run lint:fix --workspaces",
     "tsc:check": "npm run tsc:check --workspaces",
     "format": "npm run format --workspaces",
     "prepare": "husky install",
     "lint-staged": "npx lint-staged --verbose",
-    "designs": "npx serve ./Designsample"
+    "designs": "npx serve ./Designsample",
+    "build:types": "npm run build:types --workspace=types"
   },
   "repository": {
     "type": "git",
