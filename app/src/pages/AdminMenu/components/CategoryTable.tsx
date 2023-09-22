@@ -9,9 +9,11 @@ import { Category } from '@ordr/types';
 export const CategoryTable = ({
   categories,
   onCategorySelect,
+  onDelete,
 }: {
   categories: Category[];
   onCategorySelect: (category: Category) => void;
+  onDelete: (id: string) => void;
 }) => {
   return (
     <table className="table table-zebra table-sm">
@@ -47,7 +49,7 @@ export const CategoryTable = ({
                   <IconButton
                     Icon={<BinIcon />}
                     color="ghost"
-                    onClick={() => {}}
+                    onClick={() => onDelete(item._id)}
                     variant="solid"
                   />
                 ),

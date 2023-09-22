@@ -103,6 +103,17 @@ export const AdminMenuPage = () => {
     }
   };
 
+  const handleDeleteCategory = async (id: string) => {
+    try {
+      await fetch(`http://localhost:2023/api/categories/${id}`, {
+        method: 'DELETE',
+      });
+      await fetchCategories();
+    } catch (error) {
+      console.error('Error deleting category:', error);
+    }
+  };
+
   return (
     <div className="max-w-2xl mx-auto p-4">
       {showAddMenuItemModal && selectedCategory && (
@@ -136,6 +147,7 @@ export const AdminMenuPage = () => {
         <CategoryTable
           categories={categories}
           onCategorySelect={handleCategorySelect}
+          onDelete={handleDeleteCategory}
         />
       </div>
       {selectedCategory && (
