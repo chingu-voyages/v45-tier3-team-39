@@ -21,14 +21,11 @@ export const KitchenRowModal = ({
   onClose,
 }: KitchenRowModalProps): JSX.Element => {
   const handleUpdateOrderStatus = async (status: string) => {
-    const res = await fetch(
-      `https://ordr-be.onrender.com/api/orders/${order_id}`,
-      {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status }),
-      }
-    );
+    const res = await fetch(`http://localhost:2023/api/orders/${order_id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    });
     const json = await res.json();
     if (json.success) {
       onUpdateOrderStatus(json.order);
