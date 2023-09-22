@@ -40,13 +40,10 @@ export const KitchenPage = (): JSX.Element => {
     cat: keyof OrderItem
   ): React.ReactNode {
     const refObj = Object.entries(
-      items.reduce(
-        (acc, curr) => {
-          acc[curr[cat]] = (acc[curr[cat]] || 0) + curr['quantity'];
-          return acc;
-        },
-        {} as Record<string, number>
-      )
+      items.reduce((acc, curr) => {
+        acc[curr[cat]] = (acc[curr[cat]] || 0) + curr['quantity'];
+        return acc;
+      }, {} as Record<string, number>)
     );
     return refObj.map((catArr, ind) => {
       return (

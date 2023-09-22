@@ -1,16 +1,18 @@
 import React from 'react';
-import { Thumbnail } from '../../../components/Thumbnail/Thumbnail';
-import { IconButton } from '../../../components/IconButton/IconButton';
-import { BinIcon } from '../../../components/Icons/BinIcon';
-import { EditIcon } from '../../../components/Icons/EditIcon';
-import { TableRow } from '../../../components/Table';
+import { Thumbnail } from '~src/components/Thumbnail/Thumbnail';
+import { IconButton } from '~src/components/IconButton/IconButton';
+import { BinIcon } from '~src/components/Icons/BinIcon';
+import { EditIcon } from '~src/components/Icons/EditIcon';
+import { TableRow } from '~src/components/Table';
+import { MenuItem } from '@ordr/types';
 
-type MenuItem = {
-  name: string;
-  image_url: string;
-};
-
-export const MenuItemsTable = ({ menuItems }: { menuItems: MenuItem[] }) => {
+export const MenuItemsTable = ({
+  menuItems,
+  onDelete,
+}: {
+  menuItems: MenuItem[];
+  onDelete: (id: string) => Promise<void>;
+}) => {
   return (
     <table className="table table-zebra table-sm">
       <tbody>
@@ -37,7 +39,7 @@ export const MenuItemsTable = ({ menuItems }: { menuItems: MenuItem[] }) => {
                   <IconButton
                     Icon={<BinIcon />}
                     color="ghost"
-                    onClick={() => {}}
+                    onClick={() => onDelete(item._id)}
                     variant="solid"
                   />
                 ),
