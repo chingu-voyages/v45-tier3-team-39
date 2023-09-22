@@ -12,6 +12,10 @@ import userRoutes from './routes/userRoutes';
 import categoryRoutes from './routes/categoryRoutes';
 import menuRoutes from './routes/menuRoutes';
 import orderRouter from './routes/orderRoutes';
+import { createServer } from 'http';
+import { io } from './socket';
+const server = createServer();
+io.attach(server);
 
 const app = express();
 app.use(
@@ -51,6 +55,9 @@ const runServer = async () => {
         `Server is running in ${process.env.NODE_ENV} mode & listening on PORT ${PORT}`,
         `http://localhost:${PORT}`
       );
+    });
+    server.listen('8000', () => {
+      console.log('SOCKET LISTENING ON 8000');
     });
   } catch (error) {
     console.error('Server Error:', error);

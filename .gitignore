@@ -30,7 +30,7 @@ yarn-error.log*
 # builds
 */build
 *.tsbuildinfo
-app/dist/
+app/dist/*
 
 # env files
 .env

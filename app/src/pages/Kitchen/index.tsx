@@ -10,6 +10,11 @@ import { Badge } from '~src/components/Badge/Badge';
 import { IconButton } from '~src/components/IconButton/IconButton';
 import { findArrayIndex, replaceItemAtIndex } from '~src/utils';
 import { BadgeColor } from '~src/components/Badge/types';
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:8000', {
+  transports: ['websocket', 'xhr-polling'],
+});
 
 export const KitchenPage = () => {
   const [restaurantOrders, setRestaurantOrders] = useState<Order[]>([]);
@@ -17,17 +22,33 @@ export const KitchenPage = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const res = await fetch('http://localhost:2023/api/orders');
+      const res = await fetch('https://ordr-be.onrender.com/api/orders');
       const data = await res.json();
       setRestaurantOrders(data.orders);
     };
     fetchOrders();
   }, []);
 
-  const handleDeleteOrder = async (order_id: string) => {
-    const res = await fetch(`http://localhost:2023/api/orders/${order_id}`, {
-      method: 'DELETE',
+  useEffect(() => {
+    socket.on('newOrder', (order) => {
+      console.log(order);
+      setRestaurantOrders((curr) => {
+        return [...curr, order];
+      });
     });
+    return () => {
+      socket.off('newOrder');
+      socket.removeAllListeners();
+    };
+  }, []);
+
+  const handleDeleteOrder = async (order_id: string) => {
+    const res = await fetch(
+      `https://ordr-be.onrender.com/api/orders/${order_id}`,
+      {
+        method: 'DELETE',
+      }
+    );
     if (res.status === 200) {
       const newOrders = restaurantOrders.filter(
         (order) => order._id !== order_id

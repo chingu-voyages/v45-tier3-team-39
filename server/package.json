@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ordr/types": "^0.0.1",
     "@types/morgan": "^1.9.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -24,7 +25,7 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.3",
     "morgan": "^1.10.0",
-    "@ordr/types": "^0.0.1"
+    "socket.io": "^4.7.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",

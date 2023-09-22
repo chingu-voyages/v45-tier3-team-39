@@ -12,7 +12,7 @@ const options = {
   },
   servers: [
     {
-      url: 'http://localhost:2023',
+      url: 'https://ordr-be.onrender.com',
       description: 'Development server',
     },
   ],

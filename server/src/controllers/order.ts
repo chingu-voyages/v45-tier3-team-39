@@ -1,5 +1,6 @@
 import Order from '../models/Order';
 import { Request, Response } from 'express';
+import { io } from '../socket';
 
 export const createNewOrder = async (req: Request, res: Response) => {
   try {
@@ -16,7 +17,8 @@ export const createNewOrder = async (req: Request, res: Response) => {
       totalPrice: totalPrice,
     });
 
-    await order.save();
+    const storedOrder = (await order.save()).toObject();
+    io.emit('newOrder', storedOrder);
 
     res.status(201).json({
       success: true,

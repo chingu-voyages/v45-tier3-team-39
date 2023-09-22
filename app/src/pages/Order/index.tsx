@@ -19,7 +19,7 @@ export const OrderPage = () => {
       subtotal: item.price * item.quantity,
     }));
 
-    await fetch('http://localhost:2023/api/orders', {
+    await fetch('https://ordr-be.onrender.com/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
