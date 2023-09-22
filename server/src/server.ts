@@ -15,7 +15,7 @@ import categoryRoutes from './routes/categoryRoutes';
 import menuRoutes from './routes/menuRoutes';
 import orderRouter from './routes/orderRoutes';
 
-dotenv.config({ path: './config/.env' });
+dotenv.config({ path: '.env' });
 
 const isDevEnv = process.env.NODE_ENV === 'development';
 
