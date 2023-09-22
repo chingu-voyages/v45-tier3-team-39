@@ -22,7 +22,7 @@ const isDevEnv = process.env.NODE_ENV === 'development';
 const app = express();
 app.use(
   cors({
-    origin: isDevEnv ? 'http://localhost:1234' : '*',
+    origin: isDevEnv ? 'http://localhost:1234' : 'https://ordrapp.onrender.com',
   })
 );
 
@@ -30,7 +30,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: isDevEnv ? 'http://localhost:1234' : '*',
+    origin: isDevEnv ? 'http://localhost:1234' : 'https://ordrapp.onrender.com',
     methods: ['GET', 'POST'],
   },
 });
