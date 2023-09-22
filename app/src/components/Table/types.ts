@@ -9,4 +9,5 @@ export type TableRowProps = {
     value: string | number | React.ReactNode | JSX.Element;
     size?: string;
   }[];
+  onClick?: () => void;
 };

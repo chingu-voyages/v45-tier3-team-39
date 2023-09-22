@@ -1,43 +1,35 @@
 import React from 'react';
 import { Button } from '~src/components/Button/Button';
-import { useRecoilState } from 'recoil';
-import { ordersState } from '~src/atoms';
+import { OrderItem, Order } from '~src/atoms';
 import { Stat } from '~src/components/Stat/Stat';
 import { Table } from '~src/components/Table/Table';
 import { TableRow } from '~src/components/Table/TableRow';
-
-type OrderItem = {
-  name: string;
-  category: string;
-  quantity: number;
-  price: number;
-  subtotal: number;
-};
 
 interface KitchenRowModalProps {
   order_id: string;
   table: number;
   items: OrderItem[];
   onClose: () => void;
+  onUpdateOrderStatus: (item: Order) => void;
 }
 
 export const KitchenRowModal = ({
   order_id,
   table,
   items,
+  onUpdateOrderStatus,
   onClose,
 }: KitchenRowModalProps): JSX.Element => {
-  const [updatedOrders, setUpdatedOrders] = useRecoilState(ordersState);
-
-  const handleOrderStatus = (status: string) => {
-    const newOrders = updatedOrders.map((order) => {
-      if (order._id === order_id) {
-        return { ...order, orderStatus: status };
-      } else {
-        return order;
-      }
+  const handleUpdateOrderStatus = async (status: string) => {
+    const res = await fetch(`http://localhost:2023/api/orders/${order_id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
     });
-    setUpdatedOrders(newOrders);
+    const json = await res.json();
+    if (json.success) {
+      onUpdateOrderStatus(json.order);
+    }
   };
 
   return (
@@ -73,7 +65,7 @@ export const KitchenRowModal = ({
                     data={[
                       { value: '' },
                       { value: item.name },
-                      { value: item.category },
+                      { value: item.category.name },
                       { value: item.quantity },
                     ]}
                   />
@@ -90,7 +82,7 @@ export const KitchenRowModal = ({
             color="info"
             title="Preparing"
             onClick={() => {
-              handleOrderStatus('preparing');
+              handleUpdateOrderStatus('preparing');
               onClose();
             }}
           />
@@ -100,7 +92,7 @@ export const KitchenRowModal = ({
             color="accent"
             title="Ready"
             onClick={() => {
-              handleOrderStatus('ready');
+              handleUpdateOrderStatus('ready');
               onClose();
             }}
           />

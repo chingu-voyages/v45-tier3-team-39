@@ -1,92 +1,106 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Order } from '~src/atoms';
 import { Navbar } from '~src/components/Navigation/Navbar/Navbar';
 import { Kitchen } from '~src/components/Icons/Kitchen';
 import { KitchenRowModal } from '~src/components/Modals/KitchenRowModal';
 import { Table } from '~src/components/Table';
 import { TableRow } from '~src/components/Table';
-import { ordersState, Order, OrderItem } from '~src/atoms';
-import { orders } from '~src/seeds';
-import { useRecoilState } from 'recoil';
-import { useState, useEffect } from 'react';
 import { DeleteIcon } from '~src/components/Icons/DeleteIcon';
-import classes from '~src/components/Badge/classes';
 import { Badge } from '~src/components/Badge/Badge';
+import { IconButton } from '~src/components/IconButton/IconButton';
+import { findArrayIndex, replaceItemAtIndex } from '~src/utils';
+import { BadgeColor } from '~src/components/Badge/types';
 
-export const KitchenPage = (): JSX.Element => {
-  const [restaurantOrders, setRestaurantOrders] = useRecoilState(ordersState);
+export const KitchenPage = () => {
+  const [restaurantOrders, setRestaurantOrders] = useState<Order[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<Order>();
+
   useEffect(() => {
-    setRestaurantOrders([...restaurantOrders, ...orders]);
+    const fetchOrders = async () => {
+      const res = await fetch('http://localhost:2023/api/orders');
+      const data = await res.json();
+      setRestaurantOrders(data.orders);
+    };
+    fetchOrders();
   }, []);
 
-  type StatusClass = {
-    ordered: string;
-    preparing: string;
-    ready: string;
+  const handleDeleteOrder = async (order_id: string) => {
+    const res = await fetch(`http://localhost:2023/api/orders/${order_id}`, {
+      method: 'DELETE',
+    });
+    if (res.status === 200) {
+      const newOrders = restaurantOrders.filter(
+        (order) => order._id !== order_id
+      );
+      setRestaurantOrders(newOrders);
+    }
   };
-  const statusClass: StatusClass = {
-    ordered: `badge ${classes.size['lg']} px-8`,
-    preparing: `badge ${classes.size['lg']} ${classes.color['info']} px-6`,
-    ready: `badge ${classes.size['lg']} ${classes.color['warning']} px-10`,
+
+  const handleUpdateOrderStatus = (updatedOrder: Order) => {
+    const index = findArrayIndex(restaurantOrders, (order) => {
+      return order._id === updatedOrder._id;
+    });
+    const updatedOrders = replaceItemAtIndex(
+      restaurantOrders,
+      index,
+      updatedOrder
+    );
+    setRestaurantOrders(updatedOrders);
+  };
+
+  const statusClass: { [key: string]: BadgeColor } = {
+    ordered: `primary`,
+    preparing: `secondary`,
+    ready: `success`,
   };
 
   const copyOfRestaurantOrders = [...restaurantOrders];
+
   const orderByStatus = copyOfRestaurantOrders.sort((orderA, orderB) =>
     orderA.orderStatus > orderB.orderStatus ? 1 : -1
   );
 
-  function countValuesOfProp(
-    items: OrderItem[],
-    cat: keyof OrderItem
-  ): React.ReactNode {
-    const refObj = Object.entries(
-      items.reduce((acc, curr) => {
-        acc[curr[cat]] = (acc[curr[cat]] || 0) + curr['quantity'];
-        return acc;
-      }, {} as Record<string, number>)
-    );
-    return refObj.map((catArr, ind) => {
-      return (
+  const getItemsOverview = (items: Order['items']) => {
+    return items.map((item, i) => (
+      <div className="mr-2 inline-block" key={i}>
         <Badge
-          key={ind}
-          label={`${catArr[1]} x ${catArr[0]}`}
-          color={ind % 2 > 0 ? 'primary' : 'secondary'}
+          label={`${item.name} (${item.category.name}) x ${item.quantity}`}
+          size="lg"
         />
-      );
-    });
-  }
+      </div>
+    ));
+  };
 
   const tableRows = orderByStatus.map((order) => {
-    const categoriesInOrder = countValuesOfProp(order.items, 'category');
     return (
       <TableRow
         key={order._id}
-        rowClass="select-none"
+        onClick={() => setSelectedOrder(order)}
+        rowClass="select-none cursor-pointer"
         data={[
           { value: '' },
           { value: order.table },
           { value: order._id },
           {
             value: (
-              <div
-                className={`cursor-pointer ${
-                  statusClass[order.orderStatus as keyof StatusClass]
-                }`}
-                onClick={() => setSelectedOrder(order)}
-              >
-                {order.orderStatus}
-              </div>
+              <Badge
+                label={order.orderStatus.toUpperCase()}
+                color={statusClass[order.orderStatus]}
+                size="lg"
+              />
             ),
           },
-          { value: categoriesInOrder },
+          { value: getItemsOverview(order.items) },
           {
             value: (
-              <button
-                className="btn btn-ghost btn-circle"
-                onClick={() => console.log(order._id)}
-              >
-                <DeleteIcon />
-              </button>
+              <IconButton
+                onClick={(e) => {
+                  e?.stopPropagation();
+                  handleDeleteOrder(order._id);
+                }}
+                Icon={<DeleteIcon />}
+                color="ghost"
+              />
             ),
           },
         ]}
@@ -103,7 +117,7 @@ export const KitchenPage = (): JSX.Element => {
         onClickLogout={() => console.log('logged out')}
       />
       <div className="overflow-x-auto">
-        <Table headers={['', 'Table', 'Order', 'Status', 'Items', 'Delete']}>
+        <Table headers={['', 'Table', 'Order ID', 'Status', 'Items', 'Delete']}>
           {tableRows}
         </Table>
       </div>
@@ -113,6 +127,7 @@ export const KitchenPage = (): JSX.Element => {
           table={selectedOrder.table}
           items={selectedOrder.items}
           onClose={() => setSelectedOrder(undefined)}
+          onUpdateOrderStatus={handleUpdateOrderStatus}
         />
       )}
     </div>

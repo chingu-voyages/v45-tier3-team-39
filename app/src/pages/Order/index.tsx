@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavbarArrow } from '../../components/Navigation/NavbarArrow/NavbarArrow';
-import { OrderTable } from './components/OrderTable';
 import { useRecoilState } from 'recoil';
+import { NavbarArrow } from '~src/components/Navigation/NavbarArrow/NavbarArrow';
+import { Button } from '~src/components/Button/Button';
 import { basketState } from '~src/atoms';
 import { Alert } from '~src/components/Alert';
 import { InfoIcon } from '~src/components/Icons/InfoIcon';
+import { OrderTable } from './components/OrderTable';
 
 export const OrderPage = () => {
   const [basketItems, setBaketItems] = useRecoilState(basketState);
@@ -12,6 +13,24 @@ export const OrderPage = () => {
   const handleDeleteItem = (id: string) => {
     const newItems = basketItems.filter((item) => item.id !== id);
     setBaketItems(newItems);
+  };
+
+  const handleOrder = async () => {
+    const items = basketItems.map((item) => ({
+      ...item,
+      subtotal: item.price * item.quantity,
+    }));
+
+    await fetch('http://localhost:2023/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        table: 0,
+        items,
+      }),
+    });
   };
 
   return (
@@ -26,6 +45,11 @@ export const OrderPage = () => {
             customClasses="max-w-md m-4"
             Icon={<InfoIcon />}
           />
+        )}
+        {basketItems.length > 0 && (
+          <div className="flex justify-end p-3">
+            <Button title="Give me my food!" onClick={handleOrder} />
+          </div>
         )}
       </div>
     </>
