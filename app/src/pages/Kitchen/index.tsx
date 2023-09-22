@@ -11,12 +11,13 @@ import { Badge } from '~src/components/Badge/Badge';
 import { IconButton } from '~src/components/IconButton/IconButton';
 import { findArrayIndex, replaceItemAtIndex } from '~src/utils';
 import { BadgeColor } from '~src/components/Badge/types';
+import { apiURL, serverURL } from '~src/urls';
 
 export const KitchenPage = () => {
   const [restaurantOrders, setRestaurantOrders] = useState<Order[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<Order>();
 
-  const socket = io('http://localhost:2023');
+  const socket = io(serverURL);
 
   useEffect(() => {
     socket.connect();
@@ -32,7 +33,7 @@ export const KitchenPage = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const res = await fetch('http://localhost:2023/api/orders');
+      const res = await fetch(`${apiURL}/orders`);
       const data = await res.json();
       console.log(data.orders);
 
@@ -42,7 +43,7 @@ export const KitchenPage = () => {
   }, []);
 
   const handleDeleteOrder = async (order_id: string) => {
-    const res = await fetch(`http://localhost:2023/api/orders/${order_id}`, {
+    const res = await fetch(`${apiURL}/orders/${order_id}`, {
       method: 'DELETE',
     });
     if (res.status === 200) {

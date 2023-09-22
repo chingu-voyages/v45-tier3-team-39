@@ -4,6 +4,7 @@ import { OrderItem, Order } from '~src/atoms';
 import { Stat } from '~src/components/Stat/Stat';
 import { Table } from '~src/components/Table/Table';
 import { TableRow } from '~src/components/Table/TableRow';
+import { apiURL } from '~src/urls';
 
 interface KitchenRowModalProps {
   order_id: string;
@@ -21,7 +22,7 @@ export const KitchenRowModal = ({
   onClose,
 }: KitchenRowModalProps): JSX.Element => {
   const handleUpdateOrderStatus = async (status: string) => {
-    const res = await fetch(`http://localhost:2023/api/orders/${order_id}`, {
+    const res = await fetch(`${apiURL}/orders/${order_id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status }),

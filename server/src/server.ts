@@ -15,19 +15,22 @@ import categoryRoutes from './routes/categoryRoutes';
 import menuRoutes from './routes/menuRoutes';
 import orderRouter from './routes/orderRoutes';
 
+dotenv.config({ path: './config/.env' });
+
+const isDevEnv = process.env.NODE_ENV === 'development';
+
 const app = express();
 app.use(
   cors({
-    origin: 'http://localhost:1234',
+    origin: isDevEnv ? 'http://localhost:1234' : '*',
   })
 );
-dotenv.config({ path: './config/.env' });
 
 const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:1234',
+    origin: isDevEnv ? 'http://localhost:1234' : '*',
     methods: ['GET', 'POST'],
   },
 });

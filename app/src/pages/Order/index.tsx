@@ -6,6 +6,7 @@ import { basketState } from '~src/atoms';
 import { Alert } from '~src/components/Alert';
 import { InfoIcon } from '~src/components/Icons/InfoIcon';
 import { OrderTable } from './components/OrderTable';
+import { apiURL } from '~src/urls';
 
 export const OrderPage = () => {
   const [basketItems, setBaketItems] = useRecoilState(basketState);
@@ -21,7 +22,7 @@ export const OrderPage = () => {
       subtotal: item.price * item.quantity,
     }));
 
-    await fetch('http://localhost:2023/api/orders', {
+    await fetch(`${apiURL}/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
