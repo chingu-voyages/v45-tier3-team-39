@@ -12,7 +12,7 @@ import { findArrayIndex, replaceItemAtIndex } from '~src/utils';
 import { BadgeColor } from '~src/components/Badge/types';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:8000', {
+const socket = io('https://ordr-be.onrender.com/', {
   transports: ['websocket', 'xhr-polling'],
 });
 
