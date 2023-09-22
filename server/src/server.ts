@@ -17,12 +17,12 @@ import orderRouter from './routes/orderRoutes';
 
 dotenv.config({ path: '.env' });
 
-const isDevEnv = process.env.NODE_ENV === 'development';
+// const isDevEnv = process.env.NODE_ENV === 'development';
 
 const app = express();
 app.use(
   cors({
-    origin: isDevEnv ? 'http://localhost:1234' : 'https://ordrapp.onrender.com',
+    origin: '*',
   })
 );
 
@@ -30,7 +30,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: isDevEnv ? 'http://localhost:1234' : 'https://ordrapp.onrender.com',
+    origin: '*',
     methods: ['GET', 'POST'],
   },
 });
