@@ -10,10 +10,12 @@ export const CategoryTable = ({
   categories,
   onCategorySelect,
   onDelete,
+  onEdit,
 }: {
   categories: Category[];
-  onCategorySelect: (category: Category) => void;
+  onCategorySelect: (id: string) => void;
   onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
 }) => {
   return (
     <table className="table table-zebra table-sm">
@@ -30,7 +32,7 @@ export const CategoryTable = ({
                     size="sm"
                     color="dark"
                     variant="outline"
-                    onClick={() => onCategorySelect(item)}
+                    onClick={() => onCategorySelect(item._id)}
                   />
                 ),
               },
@@ -39,7 +41,7 @@ export const CategoryTable = ({
                   <IconButton
                     Icon={<EditIcon />}
                     color="ghost"
-                    onClick={() => {}}
+                    onClick={() => onEdit(item._id)}
                     variant="solid"
                   />
                 ),

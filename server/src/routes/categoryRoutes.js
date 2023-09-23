@@ -7,12 +7,12 @@ import {
   getAllCategory,
   getOneCategory,
 } from '../controllers/categoryController';
-import { protect, admin } from '../middleware/authMiddleware';
+// import { protect, admin } from '../middleware/authMiddleware';
 
 router.route('/').post(createdCategory).get(getAllCategory);
 router
   .route('/:id')
-  .put(protect, admin, updateCategory)
+  .put(updateCategory)
   .delete(deleteCategory)
   .get(getOneCategory);
 

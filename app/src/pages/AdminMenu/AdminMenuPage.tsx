@@ -7,6 +7,7 @@ import { CategoryTable } from './components/CategoryTable';
 import { MenuItemsTable } from './components/MenuItemsTable';
 import AddMenuItemModal from './components/AddMenuItemModal';
 import AddCategoryItemModal from './components/AddCategoryItemModal';
+import EditCategoryItemModal from './components/EditCategoryModal';
 
 export const AdminMenuPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -14,6 +15,8 @@ export const AdminMenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>();
   const [showAddMenuItemModal, setShowAddMenuItemModal] = useState(false);
   const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
+  const [showEditCategoryModal, setShowEditCategoryModal] = useState(false);
+  const [categoryToEdit, setCategoryToEdit] = useState<Category>();
 
   async function fetchCategories() {
     try {
@@ -40,8 +43,9 @@ export const AdminMenuPage = () => {
     fetchMenuItems();
   }, []);
 
-  const handleCategorySelect = (category: Category) => {
-    setSelectedCategory(category);
+  const handleCategorySelect = (id: string) => {
+    const categoryToSelect = categories.find((category) => category._id === id);
+    setSelectedCategory(categoryToSelect);
   };
 
   const handleDeleteItem = async (id: string) => {
@@ -114,6 +118,34 @@ export const AdminMenuPage = () => {
     }
   };
 
+  const handleEditCategorySelect = (id: string) => {
+    const categoryToEdit = categories.find((category) => category._id === id);
+    setCategoryToEdit(categoryToEdit);
+    setShowEditCategoryModal(true);
+  };
+
+  const handleEditCategory = async ({ name }: { name: string }) => {
+    if (categoryToEdit) {
+      try {
+        await fetch(
+          `http://localhost:2023/api/categories/${categoryToEdit._id}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+            }),
+          }
+        );
+        await fetchCategories();
+      } catch (error) {
+        console.error('Error updating category:', error);
+      }
+    }
+  };
+
   return (
     <div className="max-w-2xl mx-auto p-4">
       {showAddMenuItemModal && selectedCategory && (
@@ -127,6 +159,13 @@ export const AdminMenuPage = () => {
         <AddCategoryItemModal
           onAdd={handleAddCategory}
           onClose={() => setShowAddCategoryModal(false)}
+        />
+      )}
+      {showEditCategoryModal && categoryToEdit && (
+        <EditCategoryItemModal
+          category={categoryToEdit}
+          onClose={() => setShowEditCategoryModal(false)}
+          onSave={handleEditCategory}
         />
       )}
       <Navbar
@@ -148,6 +187,7 @@ export const AdminMenuPage = () => {
           categories={categories}
           onCategorySelect={handleCategorySelect}
           onDelete={handleDeleteCategory}
+          onEdit={handleEditCategorySelect}
         />
       </div>
       {selectedCategory && (
@@ -163,7 +203,7 @@ export const AdminMenuPage = () => {
           </div>
           <MenuItemsTable
             menuItems={menuItems.filter(
-              (item) => item.category.name === selectedCategory.name
+              (item) => item.category._id === selectedCategory._id
             )}
             onDelete={handleDeleteItem}
           />
