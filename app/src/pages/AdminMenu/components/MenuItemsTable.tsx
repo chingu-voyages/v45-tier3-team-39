@@ -9,9 +9,11 @@ import { MenuItem } from '@ordr/types';
 export const MenuItemsTable = ({
   menuItems,
   onDelete,
+  onEdit,
 }: {
   menuItems: MenuItem[];
   onDelete: (id: string) => Promise<void>;
+  onEdit: (id: string) => void;
 }) => {
   return (
     <table className="table table-zebra table-sm">
@@ -29,7 +31,7 @@ export const MenuItemsTable = ({
                   <IconButton
                     Icon={<EditIcon />}
                     color="ghost"
-                    onClick={() => {}}
+                    onClick={() => onEdit(item._id)}
                     variant="solid"
                   />
                 ),
