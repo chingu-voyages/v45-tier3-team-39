@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '~src/components/Button/Button';
 import { TextInput } from '~src/components/Input/TextInput/TextInput';
 import Modal from '~src/components/Modals/Modal';
+import { LoadingPage } from '~src/pages/Loading';
 import { Category } from '@ordr/types';
 
 type EditCategoryItemModal = {
@@ -16,13 +17,21 @@ const EditCategoryItemModal = ({
   category,
 }: EditCategoryItemModal) => {
   const [name, setName] = React.useState(category.name);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleEditCategory = async () => {
+    setIsLoading(true);
     await onSave({
       name,
     });
     onClose();
+    setIsLoading(false);
   };
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
   return (
     <Modal title="Edit Category" description="">
       <TextInput

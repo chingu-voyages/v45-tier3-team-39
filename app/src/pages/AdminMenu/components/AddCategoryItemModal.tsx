@@ -27,7 +27,7 @@ const AddCategoryItemModal = ({ onClose, onAdd }: AddCategoryItemModal) => {
   }
 
   return (
-    <Modal title="Add Menu Item" description="">
+    <Modal title="Add Category" description="">
       <TextInput
         label="Name"
         placeholder="Name"

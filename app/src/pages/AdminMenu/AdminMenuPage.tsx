@@ -121,7 +121,7 @@ export const AdminMenuPage = () => {
     }
   };
 
-  const handleEditCategorySelect = (id: string) => {
+  const handleSelectCategoryToEdit = (id: string) => {
     const categoryToEdit = categories.find((category) => category._id === id);
     setCategoryToEdit(categoryToEdit);
     setShowEditCategoryModal(true);
@@ -239,7 +239,7 @@ export const AdminMenuPage = () => {
           categories={categories}
           onCategorySelect={handleCategorySelect}
           onDelete={handleDeleteCategory}
-          onEdit={handleEditCategorySelect}
+          onEdit={handleSelectCategoryToEdit}
         />
       </div>
       {selectedCategory && (

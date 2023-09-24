@@ -32,7 +32,7 @@ const EditMenuItemModal = ({
   const [imageUrl, setImageUrl] = React.useState(menuItem.image_url);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const handleAddMenuItem = async () => {
+  const handleEditMenuItem = async () => {
     setIsLoading(true);
     await onSave({
       name,
@@ -76,7 +76,7 @@ const EditMenuItemModal = ({
       />
       <div className="mt-3 flex gap-2 justify-end">
         <Button title="Cancel" variant="ghost" onClick={onClose} />
-        <Button title="Save" onClick={handleAddMenuItem} />
+        <Button title="Save" onClick={handleEditMenuItem} />
       </div>
     </Modal>
   );
