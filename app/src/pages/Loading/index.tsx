@@ -18,7 +18,7 @@ const getRandomPhrase = () =>
 
 export const LoadingPage = () => {
   return (
-    <div className="h-screen w-screen flex justify-center">
+    <div className="h-screen w-screen absolute top-0 left-0 flex justify-center z-50 bg-white">
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="text-3xl font-bold text-center">
           {getRandomPhrase()}
