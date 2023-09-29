@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html",
+    "start": "NODE_ENV=development parcel src/index.html",
     "build": "parcel build src/index.html",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
@@ -22,7 +22,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "recoil": "^0.7.7",
-    "tailwind-merge": "^1.14.0"
+    "socket.io-client": "^4.7.2",
+    "tailwind-merge": "^1.14.0",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.14",

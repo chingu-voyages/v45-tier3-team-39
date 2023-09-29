@@ -1,5 +1,6 @@
-import Order from '../models/Order';
 import { Request, Response } from 'express';
+import Order from '../models/Order';
+import { socketIO } from '../server';
 
 export const createNewOrder = async (req: Request, res: Response) => {
   try {
@@ -9,7 +10,7 @@ export const createNewOrder = async (req: Request, res: Response) => {
       return acc + item.price * item.quantity;
     }, 0);
 
-    const order = new Order({
+    const order = await new Order({
       table,
       items,
       orderStatus: status || 'Not prepared',
@@ -18,11 +19,15 @@ export const createNewOrder = async (req: Request, res: Response) => {
 
     await order.save();
 
+    const itemsWithCategory = await order.populate('items.category', 'name');
+
     res.status(201).json({
       success: true,
       message: 'Order created successfully',
-      order,
+      itemsWithCategory,
     });
+
+    socketIO.emit('kitchen-order', itemsWithCategory);
   } catch (err: any) {
     res.status(500).json({
       err: err.message,
@@ -36,7 +41,7 @@ export const createNewOrder = async (req: Request, res: Response) => {
 
 export const getAllOrders = async (_req: Request, res: Response) => {
   try {
-    const orders = await Order.find().populate('items.category', 'name');
+    const orders = await Order.find({}).populate('items.category', 'name');
 
     if (!orders) {
       res.status(404).json({

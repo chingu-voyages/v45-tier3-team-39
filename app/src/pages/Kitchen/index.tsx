@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
 import { Order } from '~src/atoms';
 import { Navbar } from '~src/components/Navigation/Navbar/Navbar';
 import { Kitchen } from '~src/components/Icons/Kitchen';
@@ -10,22 +11,39 @@ import { Badge } from '~src/components/Badge/Badge';
 import { IconButton } from '~src/components/IconButton/IconButton';
 import { findArrayIndex, replaceItemAtIndex } from '~src/utils';
 import { BadgeColor } from '~src/components/Badge/types';
+import { apiURL, serverURL } from '~src/urls';
 
 export const KitchenPage = () => {
   const [restaurantOrders, setRestaurantOrders] = useState<Order[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<Order>();
 
+  const socket = io(serverURL);
+
+  useEffect(() => {
+    socket.connect();
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  socket.on('kitchen-order', (item: Order) => {
+    setRestaurantOrders([...restaurantOrders, item]);
+  });
+
   useEffect(() => {
     const fetchOrders = async () => {
-      const res = await fetch('http://localhost:2023/api/orders');
+      const res = await fetch(`${apiURL}/orders`);
       const data = await res.json();
+      console.log(data.orders);
+
       setRestaurantOrders(data.orders);
     };
     fetchOrders();
   }, []);
 
   const handleDeleteOrder = async (order_id: string) => {
-    const res = await fetch(`http://localhost:2023/api/orders/${order_id}`, {
+    const res = await fetch(`${apiURL}/orders/${order_id}`, {
       method: 'DELETE',
     });
     if (res.status === 200) {
@@ -61,6 +79,8 @@ export const KitchenPage = () => {
   );
 
   const getItemsOverview = (items: Order['items']) => {
+    console.log(items);
+
     return items.map((item, i) => (
       <div className="mr-2 inline-block" key={i}>
         <Badge
