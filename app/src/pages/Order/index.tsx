@@ -52,7 +52,7 @@ export const OrderPage = () => {
         title="Selected Items"
         onClickLogout={() => console.log('logged out')}
       />
-      <div className="overflow-x-auto p-4 mt-16">
+      <div className="overflow-x-auto p-4 sm:mt-16 mt-44">
         <OrderTable items={basketItems} onDelete={handleDeleteItem} />
         {!basketItems.length && (
           <Alert
