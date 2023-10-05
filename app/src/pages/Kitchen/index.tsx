@@ -100,7 +100,7 @@ export const KitchenPage = () => {
         data={[
           { value: '' },
           { value: order.table },
-          { value: order._id },
+          { value: order._id.slice(-5).toUpperCase() },
           {
             value: (
               <Badge
@@ -131,12 +131,12 @@ export const KitchenPage = () => {
   return (
     <div>
       <Navbar
+        menu={<div></div>}
         icon={<Kitchen />}
         title="Kitchen"
-        onClick={() => console.log('clicked')}
         onClickLogout={() => console.log('logged out')}
       />
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mt-16">
         <Table headers={['', 'Table', 'Order ID', 'Status', 'Items', 'Delete']}>
           {tableRows}
         </Table>

@@ -51,7 +51,7 @@ export const KitchenRowModal = ({
             align="responsive"
             stats={[
               { title: 'Table', value: table, justify: 'center' },
-              { title: 'Order', value: order_id },
+              { title: 'Order', value: order_id.slice(-5).toUpperCase() },
             ]}
           />
         </div>
