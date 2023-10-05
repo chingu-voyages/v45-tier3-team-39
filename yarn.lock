@@ -1456,7 +1456,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
-"@ordr/app@file:/home/fmtabbara/Desktop/projects/v45-tier3-team-39/app":
+"@ordr/app@file:/home/felcard/CHingu/v45-tier3-team-39/app":
   "resolved" "file:app"
   "version" "0.0.1"
   dependencies:
@@ -1470,7 +1470,7 @@
     "tailwind-merge" "^1.14.0"
     "typescript" "^5.2.2"
 
-"@ordr/server@file:/home/fmtabbara/Desktop/projects/v45-tier3-team-39/server":
+"@ordr/server@file:/home/felcard/CHingu/v45-tier3-team-39/server":
   "resolved" "file:server"
   "version" "0.0.1"
   dependencies:
@@ -1486,7 +1486,7 @@
     "morgan" "^1.10.0"
     "socket.io" "^4.7.2"
 
-"@ordr/types@file:/home/fmtabbara/Desktop/projects/v45-tier3-team-39/types":
+"@ordr/types@file:/home/felcard/CHingu/v45-tier3-team-39/types":
   "resolved" "file:types"
   "version" "0.0.1"
 
