@@ -86,7 +86,11 @@ export const CardModal = ({
           ✕
         </button>
         <figure className="p-4">
-          <img className="rounded-2xl object-cover" src={img_url} alt="" />
+          <img
+            className="rounded-2xl w-full h-56 object-cover"
+            src={img_url}
+            alt=""
+          />
         </figure>
         <div className="flex items-center">
           <h2 className="text-2xl font-bold pr-2">{name}</h2>
