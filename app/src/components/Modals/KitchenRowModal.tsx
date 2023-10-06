@@ -5,6 +5,7 @@ import { Stat } from '~src/components/Stat/Stat';
 import { Table } from '~src/components/Table/Table';
 import { TableRow } from '~src/components/Table/TableRow';
 import { apiURL } from '~src/urls';
+import { Thumbnail } from '../Thumbnail/Thumbnail';
 
 interface KitchenRowModalProps {
   order_id: string;
@@ -64,7 +65,9 @@ export const KitchenRowModal = ({
                     key={item.name}
                     rowClass="select-none"
                     data={[
-                      { value: '' },
+                      {
+                        value: <Thumbnail src={item.img_url} alt={item.name} />,
+                      },
                       { value: item.name },
                       { value: item.category.name },
                       { value: item.quantity },

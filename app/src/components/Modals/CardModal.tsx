@@ -69,13 +69,13 @@ export const CardModal = ({
           price,
           category,
           description,
+          img_url,
         },
       ];
     }
     setItemsInOrder(newItems);
     onClose();
   };
-
   return (
     <dialog id="ordr-modal" className="modal" open>
       <div className="modal-box">

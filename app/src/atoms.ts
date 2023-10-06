@@ -8,6 +8,7 @@ export type BasketItem = {
   description: string;
   price: number;
   quantity: number;
+  img_url: string;
 };
 
 export const basketState = atom<BasketItem[]>({
@@ -21,6 +22,7 @@ export type OrderItem = {
   quantity: number;
   price: number;
   subtotal: number;
+  img_url: string;
 };
 
 export type Order = {
