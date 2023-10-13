@@ -26,6 +26,10 @@ const orderSchema = new Schema<Order>({
         type: Number,
         required: true,
       },
+      img_url: {
+        type: String,
+        required: true,
+      },
       subtotal: {
         type: Number,
         required: true,

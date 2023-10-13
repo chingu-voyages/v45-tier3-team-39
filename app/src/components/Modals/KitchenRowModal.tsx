@@ -5,6 +5,7 @@ import { Stat } from '~src/components/Stat/Stat';
 import { Table } from '~src/components/Table/Table';
 import { TableRow } from '~src/components/Table/TableRow';
 import { apiURL } from '~src/urls';
+import { Thumbnail } from '../Thumbnail/Thumbnail';
 
 interface KitchenRowModalProps {
   order_id: string;
@@ -34,25 +35,23 @@ export const KitchenRowModal = ({
   };
 
   return (
-    <dialog id="ordr-modal" className="modal" open>
-      <div className="modal-box">
-        <div className="absolute right-2 top-2">
+    <dialog id="ordr-modal" className="modal modal-open">
+      <div className="modal-box mt-0 pt-0">
+        <div className="pt-4 flex gap-4 justify-between sticky top-0 z-20 bg-base-100 mt-0">
+          <Stat
+            background="secondary"
+            align="responsive"
+            stats={[
+              { title: 'Table', value: table, justify: 'center' },
+              { title: 'Order', value: order_id.slice(-5).toUpperCase() },
+            ]}
+          />
           <Button
             color="light"
             title="x"
             size="sm"
             variant="circle"
             onClick={onClose}
-          />
-        </div>
-        <div className="pb-4 flex gap-4 justify-center">
-          <Stat
-            background="secondary"
-            align="responsive"
-            stats={[
-              { title: 'Table', value: table, justify: 'center' },
-              { title: 'Order', value: order_id },
-            ]}
           />
         </div>
         <div>
@@ -64,7 +63,9 @@ export const KitchenRowModal = ({
                     key={item.name}
                     rowClass="select-none"
                     data={[
-                      { value: '' },
+                      {
+                        value: <Thumbnail src={item.img_url} alt={item.name} />,
+                      },
                       { value: item.name },
                       { value: item.category.name },
                       { value: item.quantity },

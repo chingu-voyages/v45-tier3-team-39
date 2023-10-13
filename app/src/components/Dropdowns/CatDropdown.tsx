@@ -1,13 +1,14 @@
 import React from 'react';
-import { categories } from '~src/mocks/categories';
 
-interface CategoryDropdownProps {
-  onSetCategory: (category: (typeof categories)[number]) => void;
+interface CategoryDropdownProps<T> {
+  categories: T[];
+  onSetCategory: (category: T) => void;
 }
 
-const CategoryDropdown = ({
+const CategoryDropdown = <T extends string>({
+  categories,
   onSetCategory,
-}: CategoryDropdownProps): JSX.Element => {
+}: CategoryDropdownProps<T>): JSX.Element => {
   const handleCloseDropDown = () => {
     const elem: any = document.activeElement;
     if (elem) {
@@ -16,7 +17,7 @@ const CategoryDropdown = ({
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown z-10">
       <label tabIndex={0} className="btn btn-ghost btn-circle">
         <svg
           xmlns="http://www.w3.org/2000/svg"

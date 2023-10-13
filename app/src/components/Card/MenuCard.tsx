@@ -23,7 +23,13 @@ const MenuCard = ({
     <div className="cursor-pointer" onClick={onAdd}>
       <Card
         title={name}
-        Image={<img src={image_url} alt={name} />}
+        Image={
+          <img
+            className="w-full lg:h-72 md:h-48 sm:h-48 object-cover"
+            src={image_url}
+            alt={name}
+          />
+        }
         description={
           <div className="flex justify-between">
             <Badge
