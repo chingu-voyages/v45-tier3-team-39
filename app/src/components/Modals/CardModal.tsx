@@ -77,7 +77,7 @@ export const CardModal = ({
     onClose();
   };
   return (
-    <dialog id="ordr-modal" className="modal" open>
+    <dialog id="ordr-modal" className="modal modal-open">
       <div className="modal-box">
         <button
           className="btn btn-circle btn-sm absolute right-2 top-2 focus:outline-none"

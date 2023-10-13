@@ -35,7 +35,7 @@ export const KitchenRowModal = ({
   };
 
   return (
-    <dialog id="ordr-modal" className="modal" open>
+    <dialog id="ordr-modal" className="modal modal-open">
       <div className="modal-box mt-0 pt-0">
         <div className="pt-4 flex gap-4 justify-between sticky top-0 z-20 bg-base-100 mt-0">
           <Stat
